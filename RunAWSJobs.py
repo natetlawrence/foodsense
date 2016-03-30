@@ -3,6 +3,7 @@ __author__ = 'natelawrence'
 import boto3
 import ssh
 import time
+import numpy as np
 from tqdm import tqdm
 
 class instances(object):
@@ -177,10 +178,27 @@ def main():
     # inst.runCmds()
 
     # Run jobs to scrape business names
-    numInstance = 1
-    puts = ['ScrapeYelp.py']
-    cmds = ['python ScrapeYelp.py 37.2 38 -122.031 -122.03 BusinessListTest.csv']
-    gets = ['BusinessListTest.csv']
+    # numInstance = 1
+    # puts = ['ScrapeYelp.py']
+    # cmds = ['python ScrapeYelp.py 37.2 38 -122.031 -122.03 BusinessListTest.csv >> output.txt 2>&1']
+    # gets = ['BusinessListTest.csv']
+    # inst = instances(puts, cmds, gets, numInstance=numInstance)
+    # inst.runCmds()
+    #
+    # #get business names for bay area
+    numInstance = 15
+    latbounds = [37.2,38]
+    longbounds = [-122.6,-121.7]
+    longstep = .01
+
+    cmds =[]
+    gets = []
+    for ind, lstart in enumerate(np.arange(longbounds[0],longbounds[1],longstep)):
+        cmds.append('python ScrapeYelp.py {} {} {} {} BizNames{}.csv >> output{}.txt 2>&1'.format(latbounds[0],latbounds[1],
+                                                                                            lstart,lstart+longstep,
+                                                                                            ind,ind))
+        gets.append(['BizNames{}.csv'.format(ind),'output{}.txt'.format(ind)])
+    puts = ['ScrapeYelp.py'] * len(gets)
     inst = instances(puts, cmds, gets, numInstance=numInstance)
     inst.runCmds()
 
