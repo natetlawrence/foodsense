@@ -4,7 +4,6 @@ import boto3
 import ssh
 import time
 import numpy as np
-from tqdm import tqdm
 
 class instances(object):
     def __init__(self,puts,cmds,gets,numInstance = 15, sleeptime=30):
