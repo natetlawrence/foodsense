@@ -20,7 +20,7 @@ class BusinessGrid(object):
                               u'{3},{2},{4}'.format(x,self.longBounds[0],self.longBounds[1],self.latBounds[0],self.latBounds[1])
         index = 0
         while index<1000:
-            time.sleep(np.random.randint(5,10))
+            time.sleep(np.random.randint(2,7))
             print 'Searching for businesses with starting index {}'.format(index)
             html = urllib.urlopen(searchURL(index)).read()
             soup = BeautifulSoup(html)
@@ -41,13 +41,13 @@ class BusinessGrid(object):
     def writeBusinessList(self,filename):
         # write businesses to file
         with open(filename, 'a') as csvfile:
-            writer = csv.writer(csvfile, delimiter=' ')
+            writer = csv.writer(csvfile, delimiter='\t')
             for biz in self.BusinessList:
                 writer.writerow([biz.name.encode('utf-8'),biz.href,biz.numReviews])
 
     def loadBusinessList(self,filename):
         with open(filename, 'r') as csvfile:
-            reader = csv.reader(csvfile, delimiter=' ')
+            reader = csv.reader(csvfile, delimiter='\t')
             for row in reader:
                 bizName = unicode(row[0].decode('utf-8'))
                 href = unicode(row[1])
@@ -112,18 +112,16 @@ class Business(object):
 def main():
 
 
-    # BizFilename = sys.argv[3]
-    # # ReviewFilename = sys.argv[4]
-    # BoundInd = [sys.argv[1],sys.argv[2]]
-    # latBounds = [37.21,37.43]
-    # longBounds = [-122.07,-122.06]
-    # minReviews = 50
-    # bg = BusinessGrid(latBounds,longBounds,minReviews)
-    # for longStart in range(-207+int(BoundInd[0]),-207+int(BoundInd[1])):
-    #     bg.longBounds = [-120.0+longStart/100.0,-120.0+(longStart+1)/100.0]
-    #     bg.searchGrid()
-    # print 'Found total of {} Businesses'.format(len(bg.BusinessList))
-    # bg.writeBusinessList(BizFilename)
+    BizFilename = sys.argv[5]
+    # ReviewFilename = sys.argv[4]
+    latBounds = [sys.argv[1],sys.argv[2]]
+    longBounds = [sys.argv[3],sys.argv[4]]
+    minReviews = 50
+    bg = BusinessGrid(latBounds,longBounds,minReviews)
+    bg.searchGrid()
+    print 'Found total of {} Businesses'.format(len(bg.BusinessList))
+    bg.writeBusinessList(BizFilename)
+
     #
     # bg.getAndSaveReviews(ReviewFilename)
 
@@ -142,14 +140,14 @@ def main():
     # bg.writeBusinessList('BusinessList.csv')
 
     # load business list and get reviews
-    BizFilename = sys.argv[1]
-    ReviewFilename = sys.argv[2]
-    latBounds = [37.21,37.43]
-    longBounds = [-122.07,-122.06]
-    minReviews = 50
-    bg = BusinessGrid(latBounds,longBounds,minReviews)
-    bg.loadBusinessList(BizFilename)
-    bg.getAndSaveReviews(ReviewFilename)
+    # BizFilename = sys.argv[1]
+    # ReviewFilename = sys.argv[2]
+    # latBounds = [37.21,37.43]
+    # longBounds = [-122.07,-122.06]
+    # minReviews = 50
+    # bg = BusinessGrid(latBounds,longBounds,minReviews)
+    # bg.loadBusinessList(BizFilename)
+    # bg.getAndSaveReviews(ReviewFilename)
 
 
 if __name__ == "__main__":

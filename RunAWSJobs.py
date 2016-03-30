@@ -76,13 +76,16 @@ class instances(object):
 
     def launch(self,num):
         # launch a single instance and put details into the 'num'th element of list
+        if len(self.puts)>0:
+            self.instanceCmds[num] = (self.puts.pop(0), self.cmds.pop(0), self.gets.pop(0))
+        else:
+            return
         instance = self.ec2.create_instances(ImageId=self.ImageId, MinCount=1, MaxCount=1,
                                             KeyName=self.KeyName,
                                             InstanceType=self.InstanceType,
                                             SecurityGroupIds=self.SecurityGroupIds)
         self.instanceList[num] = instance[0]
         #self.currentState[num] = 'pending'
-        self.instanceCmds[num] = (self.puts.pop(0), self.cmds.pop(0), self.gets.pop(0))
         self.nextActionList[num] = self.wait_while_pending
         self.isRunning[num] = 1
 
@@ -165,11 +168,19 @@ class instances(object):
 
 def main():
 
-    # test method with AWSTest.py
-    numInstance = 2
-    puts = ['AWSTest.py'] * 5
-    cmds = ['python AWSTest.py File{}.txt'.format(str(i)) for i in range(1,6)]
-    gets = ['File{}.txt'.format(str(i)) for i in range(1,6)]
+    # # test method with AWSTest.py
+    # numInstance = 2
+    # puts = ['AWSTest.py'] * 5
+    # cmds = ['python AWSTest.py File{}.txt'.format(str(i)) for i in range(1,6)]
+    # gets = ['File{}.txt'.format(str(i)) for i in range(1,6)]
+    # inst = instances(puts, cmds, gets, numInstance=numInstance)
+    # inst.runCmds()
+
+    # Run jobs to scrape business names
+    numInstance = 1
+    puts = ['ScrapeYelp.py']
+    cmds = ['python ScrapeYelp.py 37.2 38 -122.031 -122.03 BusinessListTest.csv']
+    gets = ['BusinessListTest.csv']
     inst = instances(puts, cmds, gets, numInstance=numInstance)
     inst.runCmds()
 
