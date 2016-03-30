@@ -98,9 +98,13 @@ class instances(object):
         if inst.state['Name'] == 'running':
             # check status to see if initialization passed
             instanceStatus = self.ec2.meta.client.describe_instance_status()['InstanceStatuses']
-            initStatus = [item[u'InstanceStatus'][u'Status'] for item in instanceStatus if item[u'InstanceId'] == inst.id][0]
-            if initStatus == 'ok':
-                self.nextActionList[num] = self.create_ssh_and_execute
+            try:
+                initStatus = [item[u'InstanceStatus'][u'Status'] for item in instanceStatus if item[u'InstanceId'] == inst.id][0]
+                if initStatus == 'ok':
+                    self.nextActionList[num] = self.create_ssh_and_execute
+            except:
+                print 'Instance number {} had problem in wait while pending and is being terminated'.format(num)
+                self.nextActionList[num] = self.copy_files_stop_ssh_kill
 
 
     def create_ssh_and_execute(self,num):
