@@ -4,6 +4,7 @@ import boto3
 import ssh
 import time
 import numpy as np
+from collections import deque
 
 class instances(object):
     def __init__(self,puts,cmds,gets,numInstance = 15, sleeptime=30):
@@ -195,21 +196,46 @@ def main():
     # inst.runCmds()
     #
     # #get business names for bay area
-    numInstance = 15
-    latbounds = [37.2,38]
-    longbounds = [-122.6,-121.7]
-    longstep = .01
+    # numInstance = 15
+    # latbounds = [37.2,38]
+    # longbounds = [-122.6,-121.7]
+    # longstep = .01
+    #
+    # cmds =[]
+    # gets = []
+    # for ind, lstart in enumerate(np.arange(longbounds[0],longbounds[1],longstep)):
+    #     cmds.append('python ScrapeYelp.py {} {} {} {} BizNames{}.csv >> output{}.txt 2>&1'.format(latbounds[0],latbounds[1],
+    #                                                                                         lstart,lstart+longstep,
+    #                                                                                         ind,ind))
+    #     gets.append(['BizNames{}.csv'.format(ind),'output{}.txt'.format(ind)])
+    # puts = ['ScrapeYelp.py'] * len(gets)
+    # inst = instances(puts, cmds, gets, numInstance=numInstance)
+    # inst.runCmds()
 
-    cmds =[]
+    ## get metadata for all bay area businesses
+    with open('BusinessListTest.csv','r') as f:
+        bfile = f.readlines()
+
+    fileName = lambda x: 'BusinessNames{}.txt'.format(x)
+    metafileName = lambda x: 'Metadata{}.txt'.format(x)
+    ItemsPerNode = 5
+    nlistfiles = len(bfile)/ItemsPerNode + (len(bfile) % ItemsPerNode + ItemsPerNode - 1)/ItemsPerNode
+    puts = []
     gets = []
-    for ind, lstart in enumerate(np.arange(longbounds[0],longbounds[1],longstep)):
-        cmds.append('python ScrapeYelp.py {} {} {} {} BizNames{}.csv >> output{}.txt 2>&1'.format(latbounds[0],latbounds[1],
-                                                                                            lstart,lstart+longstep,
-                                                                                            ind,ind))
-        gets.append(['BizNames{}.csv'.format(ind),'output{}.txt'.format(ind)])
-    puts = ['ScrapeYelp.py'] * len(gets)
-    inst = instances(puts, cmds, gets, numInstance=numInstance)
-    inst.runCmds()
+    cmds = []
+    for ii in range(0,nlistfiles):
+        if len(bfile) >= ItemsPerNode:
+            lines = bfile[0:ItemsPerNode]
+            del bfile[0:ItemsPerNode]
+        else:
+            lines = bfile
+            del bfile
+        with open(fileName(ii),'w') as f:
+            f.writelines(lines)
+        puts.append(['ScrapeYelp.py', fileName(ii)])
+
+
+
 
 if __name__ == "__main__":
     main()
