@@ -155,7 +155,7 @@ class Business(object):
 
     def savemetadata(self, filename):
         # append metadata to file
-        self.metadata['BizName'] = self.name.encode('utf-8')
+        self.metadata['BizName'] = self.name
         self.metadata['href'] = self.href
         self.metadata['NReviews'] = self.numReviews
         with open(filename, 'a') as jsonfile:

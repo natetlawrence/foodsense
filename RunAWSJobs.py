@@ -220,7 +220,7 @@ def main():
 
     fileName = lambda x: 'TempBusinessNamesForMD{}.txt'.format(x)
     metafileName = lambda x: 'Metadata{}.txt'.format(x)
-    ItemsPerNode = 5
+    ItemsPerNode = 250
     nlistfiles = len(bfile)/ItemsPerNode + (len(bfile) % ItemsPerNode + ItemsPerNode - 1)/ItemsPerNode
     puts = []
     gets = []
