@@ -213,7 +213,7 @@ def main():
     # b.savemetadata('TaqueriaMetaData.json')
 
     ## run to save metadata from filename input
-    BListFileName, MetaDataFileName = sys.agrv[1], sys.argv[2]
+    BListFileName, MetaDataFileName = sys.argv[1], sys.argv[2]
     saveListMetaData(BListFileName, MetaDataFileName)
 
 if __name__ == "__main__":
