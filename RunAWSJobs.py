@@ -213,59 +213,71 @@ def main():
     # inst = instances(puts, cmds, gets, numInstance=numInstance)
     # inst.runCmds()
 
-    ## get metadata for all bay area businesses
-    numInstance = 10
-    with open(sys.argv[1], 'r') as f:
-        bfile = f.readlines()
+    mode = sys.argv[1]
+    if mode == '1':
+        ## get metadata for all bay area businesses
+        numInstance = 10
+        with open(sys.argv[2], 'r') as f:
+            bfile = f.readlines()
 
-    fileName = lambda x: 'TempBusinessNamesForMD{}.txt'.format(x)
-    metafileName = lambda x: 'Metadata{}.txt'.format(x)
-    ItemsPerNode = 250
-    nlistfiles = len(bfile)/ItemsPerNode + (len(bfile) % ItemsPerNode + ItemsPerNode - 1)/ItemsPerNode
-    puts = []
-    gets = []
-    cmds = []
-    for ii in range(0,nlistfiles):
-        if len(bfile) >= ItemsPerNode:
-            lines = bfile[0:ItemsPerNode]
-            del bfile[0:ItemsPerNode]
-        else:
-            lines = bfile
-            del bfile
-        with open(fileName(ii),'w') as f:
-            f.writelines(lines)
-        puts.append(['ScrapeYelp.py', fileName(ii)])
-        cmds.append('python ScrapeYelp.py {} {} >> outputMD{}.txt 2>&1'.format(fileName(ii),metafileName(ii),ii))
-        gets.append([metafileName(ii), 'outputMD{}.txt'.format(ii)])
-    inst = instances(puts, cmds, gets, numInstance=numInstance)
-    inst.runCmds()
-
+        fileName = lambda x: 'TempBusinessNamesForMD{}.txt'.format(x)
+        metafileName = lambda x: 'Metadata{}.txt'.format(x)
+        ItemsPerNode = 250
+        nlistfiles = len(bfile)/ItemsPerNode + (len(bfile) % ItemsPerNode + ItemsPerNode - 1)/ItemsPerNode
+        puts = []
+        gets = []
+        cmds = []
+        for ii in range(0,nlistfiles):
+            if len(bfile) >= ItemsPerNode:
+                lines = bfile[0:ItemsPerNode]
+                del bfile[0:ItemsPerNode]
+            else:
+                lines = bfile
+                del bfile
+            with open(fileName(ii),'w') as f:
+                f.writelines(lines)
+            puts.append(['ScrapeYelp.py', fileName(ii)])
+            cmds.append('python ScrapeYelp.py 1 {} {} >> outputMD{}.txt 2>&1'.format(fileName(ii),metafileName(ii),ii))
+            gets.append([metafileName(ii), 'outputMD{}.txt'.format(ii)])
+        inst = instances(puts, cmds, gets, numInstance=numInstance)
+        inst.runCmds()
+    elif mode == '2':
     ## get all reviews for list of businesses
-    # numInstance = 13
-    # with open(sys.argv[1], 'r') as f:
-    #     bfile = f.readlines()
+        numInstance = 13
+        with open(sys.argv[2], 'r') as f:
+            bfile = f.readlines()
 
-    # fileName = lambda x: 'TempBusinessNamesForReviews{}.txt'.format(x)
-    # metafileName = lambda x: 'ReviewData{}.txt'.format(x)
-    # ReviewsPerNode = 250 * 20
-    # nlistfiles = len(bfile)/ItemsPerNode + (len(bfile) % ItemsPerNode + ItemsPerNode - 1)/ItemsPerNode
-    # puts = []
-    # gets = []
-    # cmds = []
-    # for ii in range(0,nlistfiles):
-    #     if len(bfile) >= ItemsPerNode:
-    #         lines = bfile[0:ItemsPerNode]
-    #         del bfile[0:ItemsPerNode]
-    #     else:
-    #         lines = bfile
-    #         del bfile
-    #     with open(fileName(ii),'w') as f:
-    #         f.writelines(lines)
-    #     puts.append(['ScrapeYelp.py', fileName(ii)])
-    #     cmds.append('python ScrapeYelp.py {} {} >> outputRD{}.txt 2>&1'.format(fileName(ii),metafileName(ii),ii))
-    #     gets.append([metafileName(ii), 'outputMD{}.txt'.format(ii)])
-    #inst = instances(puts, cmds, gets, numInstance=numInstance)
-    #inst.runCmds()
+        fileName = lambda x: 'TempBusinessNamesForReviews{}.txt'.format(x)
+        outfileName = lambda x: 'ReviewData{}.txt'.format(x)
+        ReviewsPerNode = 250 * 20
+        puts = []
+        gets = []
+        cmds = []
+        RevNum = 0
+        lines = []
+        ii = 0
+        while bfile:
+            if ((RevNum + int(bfile[0].split('\t')[2].strip())) < ReviewsPerNode) or RevNum == 0:
+                RevNum = RevNum + int(bfile[0].split('\t')[2].strip())
+                lines.append(bfile[0])
+                del bfile[0]
+            else:
+                with open(fileName(ii),'w') as f:
+                    f.writelines(lines)
+                puts.append(['ScrapeYelp.py', fileName(ii)])
+                cmds.append('python ScrapeYelp.py 2 {} {} >> outputRD{}.txt 2>&1'.format(fileName(ii),outfileName(ii),ii))
+                gets.append([outfileName(ii), 'outputRD{}.txt'.format(ii)])
+                RevNum = 0
+                lines = []
+                ii += 1
+        else:
+            with open(fileName(ii),'w') as f:
+                f.writelines(lines)
+            puts.append(['ScrapeYelp.py', fileName(ii)])
+            cmds.append('python ScrapeYelp.py 2 {} {} >> outputRD{}.txt 2>&1'.format(fileName(ii),outfileName(ii),ii))
+            gets.append([outfileName(ii), 'outputRD{}.txt'.format(ii)])
+        inst = instances(puts, cmds, gets, numInstance=numInstance)
+        inst.runCmds()
 
 
 if __name__ == "__main__":

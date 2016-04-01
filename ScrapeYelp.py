@@ -215,9 +215,21 @@ def main():
     # b.getmetadata()
     # b.savemetadata('TaqueriaMetaData.json')
 
-    ## run to save metadata from filename input
-    BListFileName, MetaDataFileName = sys.argv[1], sys.argv[2]
-    saveListMetaData(BListFileName, MetaDataFileName)
+    mode = sys.argv[1]
+    if mode == '1':
+        ## run to save metadata from filename input
+        BListFileName, MetaDataFileName = sys.argv[2], sys.argv[3]
+        saveListMetaData(BListFileName, MetaDataFileName)
+    elif mode == '2':
+        ## load business list and get reviews
+        BizFilename = sys.argv[2]
+        ReviewFilename = sys.argv[3]
+        latBounds = [None,None]
+        longBounds = [None,None]
+        minReviews = None
+        bg = BusinessGrid(latBounds,longBounds,minReviews)
+        bg.loadBusinessList(BizFilename)
+        bg.getAndSaveReviews(ReviewFilename)
 
 if __name__ == "__main__":
     main()
