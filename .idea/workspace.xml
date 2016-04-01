@@ -26,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ScrapeYelp.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ScrapeYelp.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ScrapeYelp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="0.55307263">
               <caret line="157" column="44" selection-start-line="157" selection-start-column="44" selection-end-line="157" selection-end-column="44" />
               <folding>
                 <element signature="e#29#40#0" expanded="true" />
@@ -38,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunAWSJobs.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RunAWSJobs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RunAWSJobs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.273743">
-              <caret line="225" column="13" selection-start-line="225" selection-start-column="13" selection-end-line="225" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="228" column="38" selection-start-line="228" selection-start-column="38" selection-end-line="228" selection-end-column="38" />
               <folding>
                 <element signature="e#29#41#0" expanded="true" />
                 <element signature="e#1760#2530#0" expanded="false" />
@@ -528,7 +528,7 @@
         <state vertical-scroll-proportion="0.20547946">
           <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -553,23 +553,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ScrapeYelp.py">
+    <entry file="file://$PROJECT_DIR$/RunAWSJobs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="157" column="44" selection-start-line="157" selection-start-column="44" selection-end-line="157" selection-end-column="44" />
+          <caret line="228" column="38" selection-start-line="228" selection-start-column="38" selection-end-line="228" selection-end-column="38" />
           <folding>
-            <element signature="e#29#40#0" expanded="true" />
+            <element signature="e#29#41#0" expanded="true" />
+            <element signature="e#1760#2530#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RunAWSJobs.py">
+    <entry file="file://$PROJECT_DIR$/ScrapeYelp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.273743">
-          <caret line="225" column="13" selection-start-line="225" selection-start-column="13" selection-end-line="225" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.55307263">
+          <caret line="157" column="44" selection-start-line="157" selection-start-column="44" selection-end-line="157" selection-end-column="44" />
           <folding>
-            <element signature="e#29#41#0" expanded="true" />
-            <element signature="e#1760#2530#0" expanded="false" />
+            <element signature="e#29#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
