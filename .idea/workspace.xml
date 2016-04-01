@@ -26,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ScrapeYelp.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScrapeYelp.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ScrapeYelp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75342464">
-              <caret line="161" column="46" selection-start-line="161" selection-start-column="46" selection-end-line="161" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="170" column="27" selection-start-line="170" selection-start-column="27" selection-end-line="170" selection-end-column="27" />
               <folding>
                 <element signature="e#29#40#0" expanded="true" />
               </folding>
@@ -38,14 +38,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunAWSJobs.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RunAWSJobs.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RunAWSJobs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="219" column="38" selection-start-line="219" selection-start-column="38" selection-end-line="219" selection-end-column="38" />
+            <state vertical-scroll-proportion="-6.1643834">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
               <folding>
-                <element signature="e#29#41#0" expanded="true" />
-                <element signature="e#1749#2519#0" expanded="false" />
+                <element signature="e#1760#2530#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -104,8 +103,8 @@
         <option value="$PROJECT_DIR$/Old Files/BotoTest.py" />
         <option value="$PROJECT_DIR$/Old Files/RunAWSJobs.py" />
         <option value="$PROJECT_DIR$/AWSTest.py" />
-        <option value="$PROJECT_DIR$/RunAWSJobs.py" />
         <option value="$PROJECT_DIR$/ScrapeYelp.py" />
+        <option value="$PROJECT_DIR$/RunAWSJobs.py" />
       </list>
     </option>
   </component>
@@ -565,23 +564,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RunAWSJobs.py">
+    <entry file="file://$PROJECT_DIR$/ScrapeYelp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="219" column="38" selection-start-line="219" selection-start-column="38" selection-end-line="219" selection-end-column="38" />
+          <caret line="170" column="27" selection-start-line="170" selection-start-column="27" selection-end-line="170" selection-end-column="27" />
           <folding>
-            <element signature="e#29#41#0" expanded="true" />
-            <element signature="e#1749#2519#0" expanded="false" />
+            <element signature="e#29#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ScrapeYelp.py">
+    <entry file="file://$PROJECT_DIR$/RunAWSJobs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75342464">
-          <caret line="161" column="46" selection-start-line="161" selection-start-column="46" selection-end-line="161" selection-end-column="46" />
+        <state vertical-scroll-proportion="-6.1643834">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
           <folding>
-            <element signature="e#29#40#0" expanded="true" />
+            <element signature="e#1760#2530#0" expanded="false" />
           </folding>
         </state>
       </provider>

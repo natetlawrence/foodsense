@@ -5,6 +5,7 @@ import ssh
 import time
 import numpy as np
 from collections import deque
+import sys
 
 class instances(object):
     def __init__(self,puts,cmds,gets,numInstance = 15, sleeptime=30):
@@ -213,7 +214,8 @@ def main():
     # inst.runCmds()
 
     ## get metadata for all bay area businesses
-    with open('BusinessListTest.csv','r') as f:
+    numInstance = 15
+    with open(sys.argv[1], 'r') as f:
         bfile = f.readlines()
 
     fileName = lambda x: 'BusinessNames{}.txt'.format(x)
@@ -233,7 +235,10 @@ def main():
         with open(fileName(ii),'w') as f:
             f.writelines(lines)
         puts.append(['ScrapeYelp.py', fileName(ii)])
-
+        cmds.append('python ScrapeYelp.py {} {} >> outputMD{}.txt 2>&1'.format(fileName(ii),metafileName(ii),ii))
+        gets.append([metafileName(ii), 'outputMD{}.txt'.format(ii)])
+    inst = instances(puts, cmds, gets, numInstance=numInstance)
+    inst.runCmds()
 
 
 
