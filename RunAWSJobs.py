@@ -146,9 +146,15 @@ class instances(object):
         assert isinstance(self.instanceCmds[num][1], str) or isinstance(self.instanceCmds[num][0], list)
         if isinstance(self.instanceCmds[num][2], list):
             for item in self.instanceCmds[num][2]:
-                sshconn.get(item)
+                try:
+                    sshconn.get(item)
+                except:
+                    print "Couldn't find file {}".format(item)
         elif isinstance(self.instanceCmds[num][2], str):
-            sshconn.get(self.instanceCmds[num][2])
+            try:
+                sshconn.get(self.instanceCmds[num][2])
+            except:
+                    print "Couldn't find file {}".format(self.instanceCmds[num][2])
 
         # close ssh
         sshconn.close()

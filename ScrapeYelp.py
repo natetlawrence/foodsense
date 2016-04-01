@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import csv
 import sys
 import numpy as np
+import json
 
 class BusinessGrid(object):
     def __init__(self,latBounds,longBounds,minReviews):
@@ -69,6 +70,7 @@ class Business(object):
         self.review_username = []
         self.review_stars = []
         self.review_text = []
+        self.metadata = {}
 
 
     def getReviews(self):
@@ -109,18 +111,74 @@ class Business(object):
             for ii in range(0,len(self.review_stars)):
                 writer.writerow([self.review_name[ii].encode('utf-8'),self.review_username[ii].encode('utf-8'),self.review_stars[ii]])
 
+    def getmetadata(self):
+        URL = 'http://www.yelp.com'+self.href
+        time.sleep(np.random.randint(3,7))
+        print 'Loading metadata for {}'.format(self.name.encode('utf-8'))
+        html = urllib.urlopen(URL).read()
+        soup = BeautifulSoup(html)
+
+        try: #get metadata from table
+            sdl = soup.find('div', class_="short-def-list")
+            sdlattkeys = sdl.find_all('dt', class_="attribute-key")
+            sdlattvals = sdl.find_all('dd')
+            assert len(sdlattkeys) == len(sdlattvals)
+            for key, val in zip(sdlattkeys, sdlattvals):
+                self.metadata[key.getText().strip()] = val.getText().strip()
+        except:
+            print 'Error loading metadata.'
+
+        try: #get health inspection data
+            healthinsp = soup.find('dd', class_='nowrap health-score-description')
+            self.metadata[u'Health Inspection Score'] = int(healthinsp.getText().strip().split(' ')[0])
+        except:
+            print 'Error loading health inspection score.'
+
+        try: #get health inspection data
+            pricedesc = soup.find('dd', class_='nowrap price-description')
+            self.metadata[u'Price description'] = pricedesc.getText().strip()
+        except:
+            print 'Error loading price description.'
+
+        try: #hours of operation
+            hourstable = soup.find('table', class_='table table-simple hours-table')
+            hourslist = hourstable.find_all('span', class_='nowrap')
+            hl = []
+            [hl.append(item.getText()) if not 'now' in item.getText() else None for item in hourslist]
+            names = ['Mon Open', 'Mon Close', 'Tues Open', 'Tues Close', 'Wed Open', 'Wed Close', 'Thurs Open', 'Thurs Close', 'Fri Open', 'Fri Close', 'Sat Open', 'Sat Close', 'Sun Open', 'Sun Close']
+            for key, val in zip(names, hl):
+                self.metadata[key] = val
+        except:
+            print 'Error loading hours of operation.'
+
+        return soup
+
+    def savemetadata(self, filename):
+        # append metadata to file
+        with open(filename, 'a') as jsonfile:
+            json.dump(self.metadata, jsonfile)
+
+def saveListMetaData(BListFileName,MetaDataFileName):
+    # input filename containing list of businesses, fetch metadata for eacha nd save to file
+    with open(BListFileName,'r') as f:
+        for line in f.readlines():
+            data = line.split('\t')
+            b = Business(data[0],data[1],data[2])
+            b.getmetadata()
+            b.savemetadata(MetaDataFileName)
+
 def main():
 
 
-    BizFilename = sys.argv[5]
-    # ReviewFilename = sys.argv[4]
-    latBounds = [sys.argv[1],sys.argv[2]]
-    longBounds = [sys.argv[3],sys.argv[4]]
-    minReviews = 50
-    bg = BusinessGrid(latBounds,longBounds,minReviews)
-    bg.searchGrid()
-    print 'Found total of {} Businesses'.format(len(bg.BusinessList))
-    bg.writeBusinessList(BizFilename)
+    # BizFilename = sys.argv[5]
+    # # ReviewFilename = sys.argv[4]
+    # latBounds = [sys.argv[1],sys.argv[2]]
+    # longBounds = [sys.argv[3],sys.argv[4]]
+    # minReviews = 50
+    # bg = BusinessGrid(latBounds,longBounds,minReviews)
+    # bg.searchGrid()
+    # print 'Found total of {} Businesses'.format(len(bg.BusinessList))
+    # bg.writeBusinessList(BizFilename)
 
     #
     # bg.getAndSaveReviews(ReviewFilename)
@@ -149,6 +207,14 @@ def main():
     # bg.loadBusinessList(BizFilename)
     # bg.getAndSaveReviews(ReviewFilename)
 
+    ## test get metadata
+    # b = Business('Taqueria','/biz/taqueria-castillo-mason-san-francisco',100)
+    # b.getmetadata()
+    # b.savemetadata('TaqueriaMetaData.json')
+
+    ## run to save metadata from filename input
+    BListFileName, MetaDataFileName = sys.agrv[1], sys.argv[2]
+    saveListMetaData(BListFileName, MetaDataFileName)
 
 if __name__ == "__main__":
     main()
