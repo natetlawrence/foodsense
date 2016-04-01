@@ -214,7 +214,7 @@ def main():
     # inst.runCmds()
 
     ## get metadata for all bay area businesses
-    numInstance = 15
+    numInstance = 10
     with open(sys.argv[1], 'r') as f:
         bfile = f.readlines()
 
