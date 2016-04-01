@@ -240,6 +240,32 @@ def main():
     inst = instances(puts, cmds, gets, numInstance=numInstance)
     inst.runCmds()
 
+    ## get all reviews for list of businesses
+    # numInstance = 13
+    # with open(sys.argv[1], 'r') as f:
+    #     bfile = f.readlines()
+
+    # fileName = lambda x: 'TempBusinessNamesForReviews{}.txt'.format(x)
+    # metafileName = lambda x: 'ReviewData{}.txt'.format(x)
+    # ReviewsPerNode = 250 * 20
+    # nlistfiles = len(bfile)/ItemsPerNode + (len(bfile) % ItemsPerNode + ItemsPerNode - 1)/ItemsPerNode
+    # puts = []
+    # gets = []
+    # cmds = []
+    # for ii in range(0,nlistfiles):
+    #     if len(bfile) >= ItemsPerNode:
+    #         lines = bfile[0:ItemsPerNode]
+    #         del bfile[0:ItemsPerNode]
+    #     else:
+    #         lines = bfile
+    #         del bfile
+    #     with open(fileName(ii),'w') as f:
+    #         f.writelines(lines)
+    #     puts.append(['ScrapeYelp.py', fileName(ii)])
+    #     cmds.append('python ScrapeYelp.py {} {} >> outputRD{}.txt 2>&1'.format(fileName(ii),metafileName(ii),ii))
+    #     gets.append([metafileName(ii), 'outputMD{}.txt'.format(ii)])
+    #inst = instances(puts, cmds, gets, numInstance=numInstance)
+    #inst.runCmds()
 
 
 if __name__ == "__main__":

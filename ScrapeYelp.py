@@ -155,7 +155,7 @@ class Business(object):
 
     def savemetadata(self, filename):
         # append metadata to file
-        self.metadata['BizName'] = self.name
+        self.metadata['BizName'] = self.name.encode('utf-8')
         self.metadata['href'] = self.href
         self.metadata['NReviews'] = self.numReviews
         with open(filename, 'a') as jsonfile:
@@ -164,12 +164,11 @@ class Business(object):
 
 def saveListMetaData(BListFileName,MetaDataFileName):
     # input filename containing list of businesses, fetch metadata for eacha nd save to file
-    with open(BListFileName,'r') as f:
-        for line in f.readlines():
-            data = line.split('\t')
-            b = Business(data[0],data[1],data[2])
-            b.getmetadata()
-            b.savemetadata(MetaDataFileName)
+    bg = BusinessGrid([None,None],[None,None],None)
+    bg.loadBusinessList(BListFileName)
+    for b in bg.BusinessList:
+        b.getmetadata()
+        b.savemetadata(MetaDataFileName)
 
 def main():
 
@@ -201,12 +200,12 @@ def main():
     #     bg.loadBusinessList(BizFilename(blockStart[bb],blockStop[bb]))
     # bg.writeBusinessList('BusinessList.csv')
 
-    # load business list and get reviews
+    ## load business list and get reviews
     # BizFilename = sys.argv[1]
     # ReviewFilename = sys.argv[2]
-    # latBounds = [37.21,37.43]
-    # longBounds = [-122.07,-122.06]
-    # minReviews = 50
+    # latBounds = [None,None]
+    # longBounds = [None,None]
+    # minReviews = None
     # bg = BusinessGrid(latBounds,longBounds,minReviews)
     # bg.loadBusinessList(BizFilename)
     # bg.getAndSaveReviews(ReviewFilename)
