@@ -157,6 +157,7 @@ class Business(object):
         # append metadata to file
         with open(filename, 'a') as jsonfile:
             json.dump(self.metadata, jsonfile)
+            jsonfile.write('\n')
 
 def saveListMetaData(BListFileName,MetaDataFileName):
     # input filename containing list of businesses, fetch metadata for eacha nd save to file
