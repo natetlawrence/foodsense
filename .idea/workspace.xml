@@ -41,9 +41,10 @@
       <file leaf-file-name="RunAWSJobs.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RunAWSJobs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.1643834">
-              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.24657534">
+              <caret line="220" column="48" selection-start-line="220" selection-start-column="48" selection-end-line="220" selection-end-column="48" />
               <folding>
+                <element signature="e#29#41#0" expanded="true" />
                 <element signature="e#1760#2530#0" expanded="false" />
               </folding>
             </state>
@@ -576,9 +577,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RunAWSJobs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.1643834">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.24657534">
+          <caret line="220" column="48" selection-start-line="220" selection-start-column="48" selection-end-line="220" selection-end-column="48" />
           <folding>
+            <element signature="e#29#41#0" expanded="true" />
             <element signature="e#1760#2530#0" expanded="false" />
           </folding>
         </state>

@@ -218,7 +218,7 @@ def main():
     with open(sys.argv[1], 'r') as f:
         bfile = f.readlines()
 
-    fileName = lambda x: 'BusinessNames{}.txt'.format(x)
+    fileName = lambda x: 'TempBusinessNamesForMD{}.txt'.format(x)
     metafileName = lambda x: 'Metadata{}.txt'.format(x)
     ItemsPerNode = 5
     nlistfiles = len(bfile)/ItemsPerNode + (len(bfile) % ItemsPerNode + ItemsPerNode - 1)/ItemsPerNode
