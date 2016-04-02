@@ -67,14 +67,12 @@ class instances(object):
 
     def runCmds(self):
         # loop over list of instances starting each one and advancing each
-        if len(self.cmds) == 0 and sum(self.isRunning) == 0: # if no commands left and nothing running
-            return
-        for num in range(0, self.numInstance):
-            action = self.nextActionList[num]
-            action(num)
-            print 'Instance number {} has next action {}'.format(num,action)
-        time.sleep(self.sleeptime)
-        self.runCmds()
+        while not(len(self.cmds) == 0 and sum(self.isRunning) == 0): # if no commands left and nothing running
+            for num in range(0, self.numInstance):
+                action = self.nextActionList[num]
+                action(num)
+                print 'Instance number {} has next action {}'.format(num,action)
+            time.sleep(self.sleeptime)
 
     def launch(self,num):
         # launch a single instance and put details into the 'num'th element of list
