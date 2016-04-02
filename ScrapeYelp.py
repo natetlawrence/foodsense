@@ -100,16 +100,19 @@ class Business(object):
                 for item in reviews:
                     stars = float(item.find("div",class_='review-content').find('meta').get('content'))
                     username = item.get('data-signup-object')[8:]
+                    text = item.find('p').getText()
                     self.review_stars.append(stars)
                     self.review_username.append(username)
                     self.review_name.append(self.name)
+                    self.review_text.append(text)
                 index = index+20
 
     def saveReviews(self,filename):
         with open(filename, 'a') as csvfile:
             writer = csv.writer(csvfile, delimiter=' ')
             for ii in range(0,len(self.review_stars)):
-                writer.writerow([self.review_name[ii].encode('utf-8'),self.review_username[ii].encode('utf-8'),self.review_stars[ii]])
+                writer.writerow([self.review_name[ii].encode('utf-8'),self.review_username[ii].encode('utf-8'),
+                                 self.review_stars[ii],self.review_text[ii].encode('utf-8')])
 
     def getmetadata(self):
         URL = 'http://www.yelp.com'+self.href
