@@ -30,7 +30,7 @@ class instances(object):
         self.ImageId = 'ami-f7433e97'
         self.KeyName = 'KeyPair150805'
         self.InstanceType = 't1.micro'
-        self.SecurityGroupIds = ['sg-d0bcaeb5', 'vpc-dda600b8']
+        self.SecurityGroupIds = ['sg-d0bcaeb5']
         self.key = '~/.ssh/KeyPair150805.pem'
         self.username = 'ubuntu'
 
@@ -82,8 +82,9 @@ class instances(object):
             return
         instance = self.ec2.create_instances(ImageId=self.ImageId, MinCount=1, MaxCount=1,
                                             KeyName=self.KeyName,
-                                            InstanceType=self.InstanceType,
-                                            SecurityGroupIds=self.SecurityGroupIds)
+                                            InstanceType=self.InstanceType)
+                                            #SecurityGroupIds=self.SecurityGroupIds)
+                                             
         self.instanceList[num] = instance[0]
         #self.currentState[num] = 'pending'
         self.nextActionList[num] = self.wait_while_pending
