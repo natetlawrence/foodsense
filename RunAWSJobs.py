@@ -82,8 +82,8 @@ class instances(object):
             return
         instance = self.ec2.create_instances(ImageId=self.ImageId, MinCount=1, MaxCount=1,
                                             KeyName=self.KeyName,
-                                            InstanceType=self.InstanceType)
-                                            #SecurityGroupIds=self.SecurityGroupIds)
+                                            InstanceType=self.InstanceType,
+                                            SecurityGroupIds=self.SecurityGroupIds)
 
         self.instanceList[num] = instance[0]
         #self.currentState[num] = 'pending'
