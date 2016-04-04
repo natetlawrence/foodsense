@@ -33,7 +33,7 @@ class instances(object):
         self.SecurityGroupIds = ['sg-9a4f8ffe']
         self.key = '~/.ssh/KeyPair150805.pem'
         self.username = 'ubuntu'
-        self.SubnetID = 'vpc-dda600b8'
+        self.SubnetId = 'vpc-dda600b8'
 
         # lists of files to copy to and from remote on each server. Each element can be a list of files
         self.puts = puts
@@ -85,7 +85,7 @@ class instances(object):
                                             KeyName=self.KeyName,
                                             InstanceType=self.InstanceType,
                                             SecurityGroupIds=self.SecurityGroupIds,
-                                            SubnetID=self.SubnetID)
+                                            SubnetId=self.SubnetId)
 
         self.instanceList[num] = instance[0]
         #self.currentState[num] = 'pending'
