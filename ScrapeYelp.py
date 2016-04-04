@@ -175,6 +175,16 @@ class Business(object):
         except:
             print 'Error loading neighborhood.'
 
+        try: # cuisine type
+            catlist = soup.find('span', class_='category-str-list')
+            cats = catlist.find_all('a')
+            categories = {}
+            for cat in cats:
+                categories[cat.text] = 1
+            self.metadata['categories'] = categories
+        except:
+            print 'Error loading location.'
+
     def savemetadata(self, filename):
         # append metadata to file
         self.metadata['BizName'] = self.name.encode('utf-8')
