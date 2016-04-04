@@ -154,7 +154,26 @@ class Business(object):
         except:
             print 'Error loading hours of operation.'
 
-        return soup
+        try: # location
+            lightboxmap = soup.find('div', class_='lightbox-map hidden')
+            center = json.loads(lightboxmap.get('data-map-state'))['center']
+            self.metadata['latitude'] = center['latitude']
+            self.metadata['longitude'] = center['longitude']
+        except:
+            print 'Error loading location.'
+
+        try: # get address and neighborhood
+            mapbox = soup.find('li', class_='map-box-address')
+            spans = mapbox.find_all('span')
+            keynames = ['street address', 'city', 'state', 'zipcode', 'neighborhood']
+            index = [0, 1, 2, 3, 5]
+            for key, ind in zip(keynames,index):
+                try:
+                    self.metadata[key] = spans[ind].text.strip()
+                except:
+                    print 'Couldnt find {}'.format(key)
+        except:
+            print 'Error loading neighborhood.'
 
     def savemetadata(self, filename):
         # append metadata to file
