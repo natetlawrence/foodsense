@@ -33,6 +33,7 @@ class instances(object):
         self.SecurityGroupIds = ['sg-9a4f8ffe']
         self.key = '~/.ssh/KeyPair150805.pem'
         self.username = 'ubuntu'
+        self.SubnetID = 'vpc-dda600b8'
 
         # lists of files to copy to and from remote on each server. Each element can be a list of files
         self.puts = puts
@@ -83,7 +84,8 @@ class instances(object):
         instance = self.ec2.create_instances(ImageId=self.ImageId, MinCount=1, MaxCount=1,
                                             KeyName=self.KeyName,
                                             InstanceType=self.InstanceType,
-                                            SecurityGroupIds=self.SecurityGroupIds)
+                                            SecurityGroupIds=self.SecurityGroupIds,
+                                            SubnetID=self.SubnetID)
 
         self.instanceList[num] = instance[0]
         #self.currentState[num] = 'pending'
