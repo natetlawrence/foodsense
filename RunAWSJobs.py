@@ -30,7 +30,7 @@ class instances(object):
         self.ImageId = 'ami-f7433e97'
         self.KeyName = 'KeyPair150805'
         self.InstanceType = 't1.micro'
-        self.SecurityGroupIds = ['sg-d0bcaeb5']
+        self.SecurityGroupIds = ['sg-d0bcaeb5', 'vpc-dda600b8']
         self.key = '~/.ssh/KeyPair150805.pem'
         self.username = 'ubuntu'
 
