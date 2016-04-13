@@ -1,8 +1,4 @@
 from flask import Flask, render_template, request, redirect, session
-import numpy as np
-import requests
-import pandas as pd
-from bokeh.plotting import figure, save, output_file, vplot
 
 app = Flask(__name__)
 app.vars = {}
