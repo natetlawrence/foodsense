@@ -6,6 +6,6 @@ The data form this project has been scraped from yelp and consits of ~2 million 
 
 To visualize some of this data a taco shop called El Farolito in San Francisco has been chosen. The following shows histograms and scatter plots of the number of common reviews and the score differential for each restaurant in the database.
 
-![alt tag](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![elfarolito plots](https://raw.githubusercontent.com/natetlawrence/foodsense/master/flask/static/img/elfarolitostats.png)
 
 This is my capstone project for the Data Incubator, 2016
