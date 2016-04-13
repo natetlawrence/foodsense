@@ -1,0 +1,119 @@
+[33mcommit db305a30a593bd4e0c3176099f6536f0db307534[m
+Author: natetlawrence <natetlawrence@gmail.com>
+Date:   Mon Mar 7 11:16:10 2016 -0500
+
+    Ticker Plot
+
+[33mcommit 76ff9f17a258be33cb7775fc9d73713d0bfb5a24[m
+Author: natetlawrence <natetlawrence@gmail.com>
+Date:   Mon Mar 7 11:10:41 2016 -0500
+
+    Ticker Plot
+
+[33mcommit 934d40bfe1b4b80cb5cfd3b946eaaa7624c85c45[m
+Author: natetlawrence <natetlawrence@gmail.com>
+Date:   Mon Mar 7 11:10:19 2016 -0500
+
+    Ticker Plot
+
+[33mcommit d68aa5af0a4a02f8b7394ec3c74edeefe27fc94b[m
+Author: natetlawrence <natetlawrence@gmail.com>
+Date:   Sun Mar 6 12:26:52 2016 -0500
+
+    render2
+
+[33mcommit 79e2d05e36161ac65d61ee3037799f372b81719f[m
+Author: natetlawrence <natetlawrence@gmail.com>
+Date:   Sun Mar 6 12:13:36 2016 -0500
+
+    render1
+
+[33mcommit 75603a481b28c89cad3168abebb0ec184b260ad7[m
+Author: natetlawrence <natetlawrence@gmail.com>
+Date:   Sun Mar 6 11:59:12 2016 -0500
+
+    debugmode
+
+[33mcommit cbc6454f8d1d1355cdf25193e1c4ebb5fc3d36c4[m
+Author: natetlawrence <natetlawrence@gmail.com>
+Date:   Sun Mar 6 11:52:58 2016 -0500
+
+    Print Teicker Price
+
+[33mcommit f8e995985d7c85a0a56949342c7355d7d1cbdef4[m
+Author: natetlawrence <natetlawrence@gmail.com>
+Date:   Sat Mar 5 15:15:40 2016 -0500
+
+    modifyapp
+
+[33mcommit 8edde089097dd7b6f08cda04b4a46a56cd17c86f[m
+Author: natetlawrence <natetlawrence@gmail.com>
+Date:   Sat Mar 5 15:12:07 2016 -0500
+
+    modifyapp
+
+[33mcommit f5f5a1e1f2a79739e1d7f41b8ed2c1b32d637d2b[m
+Author: natetlawrence <natetlawrence@gmail.com>
+Date:   Sat Mar 5 15:06:58 2016 -0500
+
+    modifyreq
+
+[33mcommit 3ce1559a1b59425b56f1e7d0ac262bad4a9636bd[m
+Author: natetlawrence <natetlawrence@gmail.com>
+Date:   Sat Mar 5 14:13:25 2016 -0500
+
+    modify app
+
+[33mcommit c424192cf59b93bc3747a0f26e769889c7b8bf33[m
+Author: natetlawrence <nlaw85@gmail.com>
+Date:   Sun Feb 28 20:38:10 2016 -0500
+
+    Add text file
+
+[33mcommit 1e2735eabe80972427fbabdbb9d864ffe3f21b65[m
+Author: arielist <aritem@gmail.com>
+Date:   Fri Sep 18 15:07:13 2015 -0400
+
+    update bootstrap
+
+[33mcommit 01b9442e39ca4d9d3a605940c8f489837f8f5223[m
+Author: arielist <aritem@gmail.com>
+Date:   Wed Aug 26 14:41:16 2015 -0400
+
+    remove sub specifics to make repo generalizable
+
+[33mcommit 69f939448ff6cbbe64f77c6917a215469010fd92[m
+Author: arielist <aritem@gmail.com>
+Date:   Wed Aug 26 09:25:24 2015 -0400
+
+    add submission link
+
+[33mcommit ddbaf84cafa2ba9a8b23cdc2caa3dc4a7c9a7526[m
+Author: arielist <aritem@gmail.com>
+Date:   Tue Aug 18 09:47:09 2015 -0400
+
+    copy editing
+
+[33mcommit 79e0095f7fa3c120731202852f0e545e5118b0fb[m
+Author: arielist <aritem@gmail.com>
+Date:   Tue Aug 18 09:33:08 2015 -0400
+
+    add more refs to README
+
+[33mcommit 3e6fb96bb1acb437705cd001274106189e3ef26e[m
+Author: arielist <aritem@gmail.com>
+Date:   Mon Aug 17 20:08:50 2015 -0400
+
+    linkify stuff
+
+[33mcommit 70bab1a5513b27aa05209544fa6df1262deed423[m
+Author: arielist <aritem@gmail.com>
+Date:   Mon Aug 17 20:07:23 2015 -0400
+
+    flesh out README
+
+[33mcommit 6533babe04bd9c83d99a644624d25db7b18b3724[m
+Author: arielist <aritem@gmail.com>
+Date:   Mon Aug 17 19:34:46 2015 -0400
+
+    initial commit
