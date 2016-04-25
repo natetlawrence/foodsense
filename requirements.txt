@@ -4,3 +4,5 @@ gunicorn==19.3.0
 Jinja2==2.7.2
 oauth==1.0.1
 oauthlib==0.7.2
+matplotlib==1.4.3
+colour==0.1.2

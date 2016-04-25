@@ -2,7 +2,6 @@
 import json
 import pandas as pd
 import matplotlib.cm
-import sqlite3
 import urllib
 from colour import Color
 
