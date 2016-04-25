@@ -1373,7 +1373,7 @@ a.text-danger:focus {
   color: #843534;
 }
 .bg-primary {
-  color: #fff;
+  color: #000000;
   background-color: #337ab7;
 }
 a.bg-primary:hover,

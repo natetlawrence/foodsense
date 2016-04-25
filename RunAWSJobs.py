@@ -30,7 +30,7 @@ class instances(object):
         self.ImageId = 'ami-f7433e97'
         self.KeyName = 'KeyPair150805'
         self.InstanceType = 't1.micro'
-        self.SecurityGroupIds = ['sg-9a4f8ffe']
+        self.SecurityGroupIds = ['sg-5d9e0438']
         self.key = '~/.ssh/KeyPair150805.pem'
         self.username = 'ubuntu'
         self.SubnetId = 'vpc-dda600b8'
@@ -215,7 +215,24 @@ def main():
     # inst.runCmds()
 
     mode = sys.argv[1]
-    if mode == '1':
+    if mode == '0':
+        # get list of businesses in area
+        numInstance = 12
+        latbounds = [37.2, 38]
+        longbounds = [-122.6, -121.7]
+        longstep = .01
+
+        cmds =[]
+        gets = []
+        for ind, lstart in enumerate(np.arange(longbounds[0],longbounds[1],longstep)):
+            cmds.append('python ScrapeYelp.py {} {} {} {} BizNames{}.csv >> output{}.txt 2>&1'.format(latbounds[0], latbounds[1],
+                                                                                                lstart, lstart+longstep,
+                                                                                                ind, ind))
+            gets.append(['BizNames{}.csv'.format(ind),'output{}.txt'.format(ind)])
+        puts = ['ScrapeYelp.py'] * len(gets)
+        inst = instances(puts, cmds, gets, numInstance=numInstance)
+        inst.runCmds()
+    elif mode == '1':
         ## get metadata for all bay area businesses
         numInstance = 10
         with open(sys.argv[2], 'r') as f:

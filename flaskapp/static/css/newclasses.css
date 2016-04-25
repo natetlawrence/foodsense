@@ -1,0 +1,10 @@
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+.jumbotron-front {
+    background: rgba(249, 249, 249, 0.5);
+    padding-top: 20px;
+    padding-bottom: 30px;
+}

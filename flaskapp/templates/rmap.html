@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Load GeoJSON</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' charset='utf-8'/>
+<script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+<div id='map'></div>
+<script>
+    {% if GJSON %}
+        L.mapbox.accessToken = 'pk.eyJ1Ijoibmxhdzg1IiwiYSI6ImNpbTd5b3Q4azAwcGl1aGx4bHBuYndtN20ifQ.7yeT8iMtmb7Ka_JraQq9gg';
+        var geojson = {{ GJSON|safe }};
+
+        var map = L.mapbox.map('map', 'mapbox.streets');
+
+        map.featureLayer.setGeoJSON(geojson);
+        map.scrollWheelZoom.disable();
+        map.fitBounds(map.featureLayer.getBounds());
+
+    {% else %}
+        L.mapbox.accessToken = 'pk.eyJ1Ijoibmxhdzg1IiwiYSI6ImNpbTd5b3Q4azAwcGl1aGx4bHBuYndtN20ifQ.7yeT8iMtmb7Ka_JraQq9gg';
+
+        var map = L.mapbox.map('map', 'mapbox.streets').setView([37.639, -122.308], 9);
+
+        map.scrollWheelZoom.disable();
+    {% endif %}
+</script>
+</body>
+</html>

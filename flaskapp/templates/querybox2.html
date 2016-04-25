@@ -1,0 +1,20 @@
+<form id="querybox2_input">
+    <div class="input-group select2-bootstrap-append">
+        {% if SelectBoxTextList %}
+        <select id="multi-append" class="form-control select2" name="queryboxinput" multiple>
+            {% for text in SelectBoxTextList %}
+            <option value="{{ text }}">{{ text }}</option>
+            {% endfor %}
+        </select>
+        {% else %}
+        <select id="multi-append" class="form-control select2" name="queryboxinput" multiple>
+            <option value="Error: Could not find input list">Please</option>
+        </select>
+        {% endif %}
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit" >
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+    </div>
+</form>

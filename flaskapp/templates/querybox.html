@@ -1,0 +1,29 @@
+<div class="container s2-docs-container">
+  <div class="row">
+    <div class="col-md-9" role="main">
+      <section>
+        <div class="s2">
+          <p>
+            <select class="js-example-basic-multiple-limit js-states form-control" multiple="multiple">
+                <button class="btn btn-default" type="button">Go!</button>
+            </select>
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+{% if SelectBoxTextList %}
+<select class="js-source-states">
+    {% for text in SelectBoxTextList %}
+    <option value="{{ text }}">{{ text }}</option>
+    {% endfor %}
+</select>
+{% else %}
+<select class="js-source-states">
+    <option value="P">Please</option>
+    <option value="A">Add</option>
+    <option value="O">Options</option>
+</select>
+{% endif %}

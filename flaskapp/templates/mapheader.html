@@ -1,0 +1,31 @@
+
+<!-- Map Header -->
+<section id="mapheader2" class="services bg-primary">
+    <div class="container">
+        <div class="row vcenter">
+            <div class="col-md-8 col-md-offset-2">
+                {% if MapRestaurantName %}
+                    <h1>Results:</h1>
+                    <h2>Similarities for {{ MapRestaurantName }}</h2>
+                {% else %}
+                    <h2>What are your favorite place to eat?</h2>
+                    <h3>We can recommend some new ones!</h3>
+                {% endif %}
+                {% include 'querybox2.html' %}
+            </div>
+        </div>
+        <div class="row vcenter">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>Looking for something in particular?</h2>
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+                {% include 'filterbox1.html' %}
+            </div>
+            <div class="col-md-4">
+                {% include 'filterbox2.html' %}
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>

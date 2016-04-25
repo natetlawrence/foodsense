@@ -1,0 +1,18 @@
+<form id="filterbox2_input">
+    <div class="input-group select2-bootstrap-append">
+        {% if FilterBox2List %}
+        <select id="multi-append-filterbox2" class="form-control select2" name="filterbox2input" multiple>
+            {% for text in FilterBox2List %}
+            <option value="{{ text }}">{{ text }}</option>
+            {% endfor %}
+        </select>
+        {% else %}
+        <select id="multi-append-filterbox2" class="form-control select2" name="filterbox2input" multiple>
+            <option value="Error: Could not find input list">Please</option>
+        </select>
+        {% endif %}
+        <span class="input-group-addon">
+            <input id="filterbox2-checkbox" type="checkbox" unchecked>
+        </span>
+    </div>
+</form>

@@ -17,10 +17,10 @@ class BusinessGrid(object):
 
     def searchGrid(self):
         # search specified grid for businesses
-        searchURL = lambda x: u'https://www.yelp.com/search?find_desc=restaurant&start={0}&sortby=review_count&l=g:{1},' \
+        searchURL = lambda x: u'https://www.yelp.com/search?find_desc=restaurant&find_loc=CA&start={0}&sortby=review_count&l=g:{1},' \
                               u'{3},{2},{4}'.format(x,self.longBounds[0],self.longBounds[1],self.latBounds[0],self.latBounds[1])
         index = 0
-        while index<1000:
+        while index < 1000:
             time.sleep(np.random.randint(2,7))
             print 'Searching for businesses with starting index {}'.format(index)
             html = urllib.urlopen(searchURL(index)).read()
@@ -248,7 +248,17 @@ def main():
     # b.savemetadata('TaqueriaMetaData.json')
 
     mode = sys.argv[1]
-    if mode == '1':
+    if mode == '0':
+        BizFilename = sys.argv[5]
+        # ReviewFilename = sys.argv[4]
+        latBounds = [sys.argv[1],sys.argv[2]]
+        longBounds = [sys.argv[3],sys.argv[4]]
+        minReviews = 100
+        bg = BusinessGrid(latBounds,longBounds,minReviews)
+        bg.searchGrid()
+        print 'Found total of {} Businesses'.format(len(bg.BusinessList))
+        bg.writeBusinessList(BizFilename)
+    elif mode == '1':
         ## run to save metadata from filename input
         BListFileName, MetaDataFileName = sys.argv[2], sys.argv[3]
         saveListMetaData(BListFileName, MetaDataFileName)
