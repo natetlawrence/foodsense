@@ -5,8 +5,8 @@ import matplotlib.cm
 import urllib
 from colour import Color
 
-dfmeta = pd.read_pickle('../MetaDataFrame.pd')
-simsdf = pd.read_pickle('../SimilaritiesDataFrame.pd')
+dfmeta = pd.read_pickle('MetaDataFrame.pd')
+simsdf = pd.read_pickle('SimilaritiesDataFrame.pd')
 
 def getBusinessNames(filter):
     '''
