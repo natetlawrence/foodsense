@@ -16,7 +16,7 @@ def top():
         return render_template('top.html', SelectBoxTextList=querydb.getBusinessNames(None),
                                FilterBox1List=querydb.getCityNames(None),
                                FilterBox2List=querydb.getCategoryNames(None),
-                               MapRestaurantName=None)
+                               MapRestaurantName=None) 
     # elif request.method == 'POST':
     #     print 'POST'
     #     app.vars['queryboxinput'] = request.form['queryboxinput']
