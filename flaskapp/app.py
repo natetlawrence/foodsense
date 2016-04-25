@@ -8,7 +8,7 @@ app.secret_key = '\t\xf7\xcc\xd1ah\xb0q*\x97\x0b\xd2pn)\x0b\xd9\xd34]R\x8c\x0b\x
 
 @app.route('/')
 def main():
-    return redirect('/page/top.html')
+    return redirect('/top')
 
 @app.route('/top',methods=['GET','POST'])
 def top():
