@@ -7,3 +7,4 @@ oauthlib==0.7.2
 matplotlib==1.4.3
 colour==0.1.2
 pandas==0.16.2
+Flask-Bootstrap==3.3.5.7
