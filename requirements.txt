@@ -6,3 +6,4 @@ oauth==1.0.1
 oauthlib==0.7.2
 matplotlib==1.4.3
 colour==0.1.2
+pandas==0.16.2
