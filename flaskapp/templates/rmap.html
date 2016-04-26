@@ -12,8 +12,46 @@
 </style>
 </head>
 <body>
-<div id='map'></div>
-<script>
+    <style>
+    .legend label,
+    .legend span {
+      display:block;
+      float:left;
+      height:15px;
+      width:11.11%;
+      text-align:center;
+      font-size:9px;
+      color:#808080;
+      }
+    </style>
+
+    <!-- Set the display of this container to none so we can
+         add it programmatically to `legendControl` -->
+    <div id='legend' style='display:none;'>
+      <strong>Similarity rating for restaurants</strong>
+      <nav class='legend clearfix'>
+            <span style='background:#ffffcc;'></span>
+            <span style='background:#ffeda0;'></span>
+            <span style='background:#fed976;'></span>
+            <span style='background:#feb24c;'></span>
+            <span style='background:#fd8d3c;'></span>
+            <span style='background:#fc4e2a;'></span>
+          <span style='background:#e31a1c;'></span>
+          <span style='background:#bd0026;'></span>
+          <span style='background:#800026;'></span>
+        <label>Dissimilar</label>
+        <label></label>
+          <label></label>
+          <label></label>
+          <label></label>
+          <label></label>
+        <label></label>
+        <label></label>
+        <label>Similar</label>
+    </div>
+    <div id='map'></div>
+
+    <script>
     {% if GJSON %}
         L.mapbox.accessToken = 'pk.eyJ1Ijoibmxhdzg1IiwiYSI6ImNpbTd5b3Q4azAwcGl1aGx4bHBuYndtN20ifQ.7yeT8iMtmb7Ka_JraQq9gg';
         var geojson = {{ GJSON|safe }};
@@ -30,7 +68,9 @@
         var map = L.mapbox.map('map', 'mapbox.streets').setView([37.639, -122.308], 9);
 
         map.scrollWheelZoom.disable();
+        map.legendControl.addLegend(document.getElementById('legend').innerHTML);
     {% endif %}
-</script>
+    </script>
 </body>
 </html>
+

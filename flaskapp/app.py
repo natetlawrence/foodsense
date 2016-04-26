@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session, url_for
 import querydb
 from flask_bootstrap import Bootstrap
 
+
 app = Flask(__name__)
 app.vars = {}
 app.secret_key = '\t\xf7\xcc\xd1ah\xb0q*\x97\x0b\xd2pn)\x0b\xd9\xd34]R\x8c\x0b\xa5'
@@ -16,7 +17,7 @@ def top():
         return render_template('top.html', SelectBoxTextList=querydb.getBusinessNames(None),
                                FilterBox1List=querydb.getCityNames(None),
                                FilterBox2List=querydb.getCategoryNames(None),
-                               MapRestaurantName=None) 
+                               MapRestaurantName=None)
     # elif request.method == 'POST':
     #     print 'POST'
     #     app.vars['queryboxinput'] = request.form['queryboxinput']

@@ -216,14 +216,15 @@
         var filterbox2input = $( "#multi-append-filterbox2" ).val();
         var filterbox2checked = $( "#filterbox2-checkbox" ).is(':checked');
         if (mapname!=null) {
-            var mapurl = mapname.join('&');
+            var mapurl = mapname.join('&&');
             if (filterbox1input!=null && filterbox1checked) {
-                mapurl += '+city=' + filterbox1input.join('&')
+                mapurl += '+city=' + filterbox1input.join('&&')
             }
             if (filterbox2input!=null && filterbox2checked) {
-                mapurl += '+categories=' + filterbox2input.join('&')
+                mapurl += '+categories=' + filterbox2input.join('&&')
             }
             $("iframe").attr('src', '/rmap/' + mapurl);
+            console.log(mapurl)
         } else {
             $("iframe").attr('src', '/rmap');
         }

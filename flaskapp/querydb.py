@@ -7,6 +7,8 @@ from colour import Color
 
 dfmeta = pd.read_pickle('MetaDataFrame.pd')
 simsdf = pd.read_pickle('SimilaritiesDataFrame.pd')
+colors = ['#ffffcc','#ffeda0','#fed976','#feb24c','#fd8d3c','#fc4e2a','#e31a1c','#bd0026','#800026']
+
 
 def getBusinessNames(filter):
     '''
@@ -44,11 +46,11 @@ def parseURL(url):
              dictionary is a field to filter on and value is a list of possible values
     '''
     sections = url.split('+')
-    Restaurants = sections[0].split('&')
+    Restaurants = sections[0].split('&&')
     filters = None
     for sec in sections[1:]:
         key = sec.split('=')[0]
-        value = sec.split('=')[1].split('&')
+        value = sec.split('=')[1].split('&&')
         if filters:
             filters[key] = value
         else:
@@ -86,20 +88,11 @@ def getGJSON(url):
     bizfinal = bizfinal.drop(reviewcounts,axis=1)
     bizfinal['Score'] = meanscore
 
-    scores = bizfinal['Score']
-    if len(scores) > 1:
-        colorInd = [int(255-round(255*(score - min(scores))/(max(scores) - min(scores)))) for score in scores] # color index
-        colors = [Color(rgb=matplotlib.cm.Reds(ind)[:-1]).hex for ind in colorInd]
-    else:
-        colors = Color('red').hex
-    bizfinal['Color'] = colors
-
     for biz in bizlist:
         if any(bizfinal['BizName'] == biz):
             bizfinal.loc[bizfinal['BizName']==biz,'Score'] = 0.0
-            bizfinal.loc[bizfinal['BizName']==biz,'Color'] = Color('blue').hex
         else:
-            bizentry = pd.DataFrame([[biz, 0.0, Color('blue').hex]], columns=['BizName' , 'Score', 'Color'])
+            bizentry = pd.DataFrame([[biz, 0.0]], columns=['BizName' , 'Score'])
             bizfinal = bizfinal.append(bizentry)
     dfm = bizfinal.merge(dfmeta,on='BizName')
 
@@ -111,6 +104,20 @@ def getGJSON(url):
                 if len(set(row.split(',')).intersection(set(values))) == 0:
                     include[ind] = False
         dfm = dfm[include]
+
+    MeanScore = dfm[dfm['Score'] != 0]['Score'].mean()
+    StdScore = dfm[dfm['Score'] != 0]['Score'].std()
+    stdlims = [-2,2]
+
+    colors = ['#ffffff','#ffffcc','#ffeda0','#fed976','#feb24c','#fd8d3c','#fc4e2a','#e31a1c','#bd0026','#800026'][::-1]
+    bins = [i/2.0-2 for i in range(8)]
+    zscore = (dfm['Score']-MeanScore)/StdScore
+    clist = []
+    for ind, item in enumerate(zscore):
+        b = sum([1 if item > i else 0 for i in bins])
+        clist.append(colors[b])
+    dfm['Color'] = clist
+    dfm.loc[dfm['Score']==0.0,'Color'] = Color('blue').hex
 
     # turn into a geojson file
     gjl = []

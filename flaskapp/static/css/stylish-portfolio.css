@@ -200,9 +200,6 @@ hr.small {
     height: 100%;
     color: #fff;
     margin: auto;
-    margin-bottom: 50px;
-    margin-top: 50px;
-    background: url(../img/schematic.jpg) no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -240,12 +237,12 @@ hr.small {
 /* Map */
 
 .map {
-    height: 500px;
+    height: 100%;
 }
 
 @media(max-width:768px) {
     .map {
-        height: 75%;
+        height: 100%;
     }
 }
 
