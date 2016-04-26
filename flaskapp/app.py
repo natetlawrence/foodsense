@@ -39,12 +39,10 @@ def query():
 @app.route('/rmap/<name>')
 def rmap(name=None):
     if name:
-          GJSON = querydb.getGJSON(name)
-          #print unicode(GJSON).replace("'",'"')
-          return render_template('rmap.html', GJSON=str(GJSON).replace("u'", "'"))
-          #return render_template('rmap.html', GJSON=GJSON)
-    else:
-        return render_template('rmap.html', GJSON=None)
+        GJSON = querydb.getGJSON(name)
+        if len(GJSON) > 0:
+            return render_template('rmap.html', GJSON=str(GJSON).replace("u'", "'"))
+    return render_template('rmap.html', GJSON=None)
 
 @app.route('/page/<name>')
 def displaypage(name=None):
