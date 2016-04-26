@@ -61,6 +61,8 @@
         map.featureLayer.setGeoJSON(geojson);
         map.scrollWheelZoom.disable();
         map.fitBounds(map.featureLayer.getBounds());
+        map.legendControl.addLegend(document.getElementById('legend').innerHTML);
+
 
     {% else %}
         L.mapbox.accessToken = 'pk.eyJ1Ijoibmxhdzg1IiwiYSI6ImNpbTd5b3Q4azAwcGl1aGx4bHBuYndtN20ifQ.7yeT8iMtmb7Ka_JraQq9gg';
