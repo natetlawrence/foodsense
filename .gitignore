@@ -4,3 +4,4 @@ CapstoneVideos/*
 *.csv
 startbootstrap*
 data/scraped*
+flaskapp/templates/oldfiles/*
