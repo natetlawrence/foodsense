@@ -7,7 +7,7 @@ from colour import Color
 
 dfmeta = pd.read_pickle('MetaDataFrame.pd')
 simsdf = pd.read_pickle('SimilaritiesDataFrame.pd')
-colors = ['#ffffcc','#ffeda0','#fed976','#feb24c','#fd8d3c','#fc4e2a','#e31a1c','#bd0026','#800026']
+colors = ['#ffffcc','#ffeda0','#fed976','#feb24c','#fd8d3c','#fc4e2a','#e31a1c','#bd0026','#800026'][::-1]
 
 
 def getBusinessNames(filter):
@@ -70,7 +70,6 @@ def getGJSON(url):
     b = False
     bizfinal = None
     for biz in bizlist:
-        #simsdf[simsdf['Biz2'] == biz].append(simsdf[simsdf['Biz1'] == biz])
         biz1 = simsdf[simsdf['Biz2'] == biz].drop(['Biz2'], axis=1)
         biz1.columns = ['BizName', 'ReviewCount', 'Score']
         biz2 = simsdf[simsdf['Biz1'] == biz].drop(['Biz1'], axis=1)
@@ -109,8 +108,7 @@ def getGJSON(url):
     StdScore = dfm[dfm['Score'] != 0]['Score'].std()
     stdlims = [-2,2]
 
-    colors = ['#ffffff','#ffffcc','#ffeda0','#fed976','#feb24c','#fd8d3c','#fc4e2a','#e31a1c','#bd0026','#800026'][::-1]
-    bins = [i/2.0-2 for i in range(8)]
+    bins = [i/2.0-2 for i in range(len(colors)-1)]
     zscore = (dfm['Score']-MeanScore)/StdScore
     clist = []
     for ind, item in enumerate(zscore):
@@ -128,7 +126,5 @@ def getGJSON(url):
         desc = 'Rating Differential: '+str(round(item['Score'],2))+',\nCategories: '+item['categories']
         gj['properties'] = {'title':item['BizName'],
                             'description' : desc , 'marker-color' : item['Color'], "marker-size": "medium"}
-        # gj['properties'] = {'title':str('title'),
-        #                     'description' : str(desc), 'marker-color' : item['Color'], "marker-size": "medium"}
         gjl.append(gj)
     return gjl

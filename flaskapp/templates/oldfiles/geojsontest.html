@@ -1,0 +1,7036 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Load GeoJSON</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+<div id='map'></div>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1Ijoibmxhdzg1IiwiYSI6ImNpbTd5b3Q4azAwcGl1aGx4bHBuYndtN20ifQ.7yeT8iMtmb7Ka_JraQq9gg';
+var geojson = [
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4371614,
+        37.7211313
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#00f",
+      "description": "Rating Differential: 0.0\nCategories: Mexican",
+      "title": "El Farolito"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4181915,
+        37.752654
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#00f",
+      "description": "Rating Differential: 0.0\nCategories: Mexican",
+      "title": "El Farolito"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.401372356986,
+        37.7882977785009
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#fff",
+      "description": "Rating Differential: 0.666666666667\nCategories: Sandwiches",
+      "title": "The Sentinel"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.396104066043,
+        37.7816626955148
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#fcfcfc",
+      "description": "Rating Differential: 0.692913385827\nCategories: Burgers, Gastropubs, Mexican",
+      "title": "Garaje"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4082361,
+        37.7955091
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#fbfbfb",
+      "description": "Rating Differential: 0.699029126214\nCategories: Bakeries, Dim Sum, Cantonese",
+      "title": "Good Mong Kok Bakery"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4173367975,
+        37.783059744376
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f9f9f9",
+      "description": "Rating Differential: 0.72\nCategories: Sandwiches, Vietnamese",
+      "title": "Saigon Sandwich"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4308676,
+        37.7643545
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f8f8f8",
+      "description": "Rating Differential: 0.724137931034\nCategories: Asian Fusion, Breakfast & Brunch, American (New)",
+      "title": "Kitchen Story"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2573837,
+        37.8677208
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f7f7f7",
+      "description": "Rating Differential: 0.741496598639\nCategories: Hot Dogs",
+      "title": "Top Dog"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2443417,
+        37.8106383
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f7f7f7",
+      "description": "Rating Differential: 0.741496598639\nCategories: Hot Dogs",
+      "title": "Top Dog"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3997546,
+        37.7970358
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f6f6f6",
+      "description": "Rating Differential: 0.752525252525\nCategories: Greek, Mediterranean",
+      "title": "Kokkari Estiatorio"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4306217,
+        37.6508739
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f5f5f5",
+      "description": "Rating Differential: 0.755102040816\nCategories: Delis, Sandwiches",
+      "title": "Little Lucca Sandwich Shop & Deli"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.0784529,
+        37.3950628
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f5f5f5",
+      "description": "Rating Differential: 0.759124087591\nCategories: Mongolian, Chinese, Hot Pot",
+      "title": "Little Sheep Mongolian Hot Pot"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.021835,
+        37.587707
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f5f5f5",
+      "description": "Rating Differential: 0.759124087591\nCategories: Mongolian, Chinese, Hot Pot",
+      "title": "Little Sheep Mongolian Hot Pot"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.005845067682,
+        37.3226633951438
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f5f5f5",
+      "description": "Rating Differential: 0.759124087591\nCategories: Mongolian, Chinese, Hot Pot",
+      "title": "Little Sheep Mongolian Hot Pot"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.8659402,
+        37.7041275
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f5f5f5",
+      "description": "Rating Differential: 0.759124087591\nCategories: Mongolian, Chinese, Hot Pot",
+      "title": "Little Sheep Mongolian Hot Pot"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3235942,
+        37.5655105
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f5f5f5",
+      "description": "Rating Differential: 0.759124087591\nCategories: Mongolian, Chinese, Hot Pot",
+      "title": "Little Sheep Mongolian Hot Pot"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2448111,
+        37.8106889
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f4f4f4",
+      "description": "Rating Differential: 0.768558951965\nCategories: Bakeries, Coffee & Tea, Pizza",
+      "title": "Arizmendi Bakery"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4664991,
+        37.7633882
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f4f4f4",
+      "description": "Rating Differential: 0.768558951965\nCategories: Bakeries, Pizza",
+      "title": "Arizmendi Bakery"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.52686925343,
+        37.973151555215
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f4f4f4",
+      "description": "Rating Differential: 0.768558951965\nCategories: Bakeries, Sandwiches, Pizza",
+      "title": "Arizmendi Bakery"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.400309741497,
+        37.6084286883237
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f3f3f3",
+      "description": "Rating Differential: 0.771186440678\nCategories: Breakfast & Brunch",
+      "title": "Millbrae Pancake House"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.395337771053,
+        37.7810450986458
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f3f3f3",
+      "description": "Rating Differential: 0.771844660194\nCategories: Asian Fusion",
+      "title": "HRD"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.5060913,
+        37.7601695
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f3f3f3",
+      "description": "Rating Differential: 0.772727272727\nCategories: Seafood, Vietnamese",
+      "title": "Thanh Long"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.469001,
+        37.7636959
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f3f3f3",
+      "description": "Rating Differential: 0.773504273504\nCategories: Asian Fusion, Korean, Chinese",
+      "title": "San Tung"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4063459,
+        37.7981914
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f3f3f3",
+      "description": "Rating Differential: 0.775862068966\nCategories: Tapas/Small Plates, Cocktail Bars",
+      "title": "15 Romolo"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2745149,
+        37.8014532
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f3f3f3",
+      "description": "Rating Differential: 0.778378378378\nCategories: Gastropubs, Hot Dogs",
+      "title": "Rosamunde Sausage Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4311251,
+        37.7718371
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f3f3f3",
+      "description": "Rating Differential: 0.778378378378\nCategories: German",
+      "title": "Rosamunde Sausage Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.994206438342,
+        37.3363031993459
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f2f2f2",
+      "description": "Rating Differential: 0.781914893617\nCategories: Ramen",
+      "title": "Orenchi Ramen"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3185857,
+        37.5621542
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f2f2f2",
+      "description": "Rating Differential: 0.782222222222\nCategories: Ramen",
+      "title": "Ramen Dojo"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9780417,
+        37.3151291
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f2f2f2",
+      "description": "Rating Differential: 0.784\nCategories: Ramen",
+      "title": "Hokkaido Ramen Santouka"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4080729,
+        37.7997956
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f1f1f1",
+      "description": "Rating Differential: 0.795238095238\nCategories: Pizza, Italian",
+      "title": "Golden Boy Pizza"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.484454,
+        37.78233
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f0f0f0",
+      "description": "Rating Differential: 0.797752808989\nCategories: Seafood, Vietnamese",
+      "title": "PPQ Dungeness Island"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4105484,
+        37.7606198
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#f0f0f0",
+      "description": "Rating Differential: 0.803571428571\nCategories: Breakfast & Brunch, American (New)",
+      "title": "Universal Cafe"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4205869,
+        37.8058828
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.809734513274\nCategories: American (New)",
+      "title": "Gary Danko"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.277439345595,
+        37.7839464032903
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.258600423279,
+        37.5129358470743
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.227839038098,
+        37.4906206971377
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1983173,
+        37.7403226
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1311362,
+        37.6869817
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.093326092446,
+        37.4209462408349
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.074063949235,
+        37.3803709702694
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.0655899,
+        37.5992728
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.024914,
+        37.361033
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.982106,
+        37.387923
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.97400126841,
+        37.504216896352
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.977007180951,
+        37.779137474151
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.922365,
+        37.4263
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.921849568717,
+        37.3502907746109
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.907611621496,
+        37.7002511110616
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.7732469,
+        37.6994281
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.515482,
+        37.896609
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.382390251312,
+        37.6008282713993
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.31076757539,
+        37.989088176186
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815642458101\nCategories: Burgers, Fast Food",
+      "title": "In-N-Out Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.43507770852,
+        37.785735681426
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eee",
+      "description": "Rating Differential: 0.815789473684\nCategories: American (Traditional), Breakfast & Brunch",
+      "title": "Sweet Maple"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.393317222595,
+        37.7954575817651
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ececec",
+      "description": "Rating Differential: 0.823275862069\nCategories: Seafood, Seafood Markets, Live/Raw Food",
+      "title": "Hog Island Oyster Co"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4328504,
+        37.7853699
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ececec",
+      "description": "Rating Differential: 0.824561403509\nCategories: Indian",
+      "title": "DOSA on Fillmore"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4380073,
+        37.7775482
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ececec",
+      "description": "Rating Differential: 0.825622775801\nCategories: Pizza",
+      "title": "Little Star Pizza"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2968295,
+        37.8905772
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ececec",
+      "description": "Rating Differential: 0.825622775801\nCategories: Pizza",
+      "title": "Little Star Pizza"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.424638201818,
+        37.7680853025175
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ececec",
+      "description": "Rating Differential: 0.825641025641\nCategories: Breakfast & Brunch, American (New)",
+      "title": "Mission Beach Cafe"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.994058,
+        37.353563
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ececec",
+      "description": "Rating Differential: 0.826923076923\nCategories: Korean, Barbeque",
+      "title": "Jang Su Jang"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.911516,
+        37.4277815
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ececec",
+      "description": "Rating Differential: 0.826923076923\nCategories: Korean, Seafood, Barbeque",
+      "title": "Jang Su Jang"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.420266,
+        37.7522753
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ebebeb",
+      "description": "Rating Differential: 0.829931972789\nCategories: Cheesesteaks, Chicken Wings, Sandwiches",
+      "title": "Phat Philly"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.407498,
+        37.772413
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ebebeb",
+      "description": "Rating Differential: 0.830601092896\nCategories: Asian Fusion, Chinese",
+      "title": "SO"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.412228137255,
+        37.6557878294219
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ebebeb",
+      "description": "Rating Differential: 0.831932773109\nCategories: Asian Fusion, Vietnamese",
+      "title": "Ben Tre Vietnamese Homestyle Cuisine"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.390365043513,
+        37.6005691935569
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ebebeb",
+      "description": "Rating Differential: 0.831932773109\nCategories: Vietnamese",
+      "title": "Ben Tre Vietnamese Homestyle Cuisine"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.32386,
+        37.566134
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ebebeb",
+      "description": "Rating Differential: 0.831932773109\nCategories: Vietnamese",
+      "title": "Ben Tre Vietnamese Homestyle Cuisine"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.26217067875,
+        37.837041785668
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ebebeb",
+      "description": "Rating Differential: 0.832599118943\nCategories: Bakeries, American (Traditional), Sandwiches",
+      "title": "Bakesale Betty"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.269444,
+        37.880019
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#eaeaea",
+      "description": "Rating Differential: 0.837037037037\nCategories: Pizza",
+      "title": "Cheese Board Pizza"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.392534017563,
+        37.795398235987
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e9e9e9",
+      "description": "Rating Differential: 0.840490797546\nCategories: Sandwiches, Food Trucks",
+      "title": "Roli Roti Gourmet Rotisserie"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4643174,
+        37.7852554
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e9e9e9",
+      "description": "Rating Differential: 0.842465753425\nCategories: Burmese",
+      "title": "Mandalay"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4653891,
+        37.7408262
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e9e9e9",
+      "description": "Rating Differential: 0.843137254902\nCategories: Sandwiches",
+      "title": "Submarine Center"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4607042,
+        37.7833684
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e9e9e9",
+      "description": "Rating Differential: 0.845679012346\nCategories: French",
+      "title": "Chapeau!"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3927671,
+        37.7933275
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e8e8e8",
+      "description": "Rating Differential: 0.846774193548\nCategories: French, American (New)",
+      "title": "Boulevard"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.418153,
+        37.750552
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e8e8e8",
+      "description": "Rating Differential: 0.847715736041\nCategories: Bakeries, Cafes",
+      "title": "Mission Pie"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3940842,
+        37.7788601
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e8e8e8",
+      "description": "Rating Differential: 0.85\nCategories: Soul Food",
+      "title": "Little Skillet"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.39535099572,
+        37.762537673684
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e7e7e7",
+      "description": "Rating Differential: 0.852564102564\nCategories: Breakfast & Brunch, American (New)",
+      "title": "Plow"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.32379573884,
+        37.565801343041
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e7e7e7",
+      "description": "Rating Differential: 0.853658536585\nCategories: Ramen",
+      "title": "Himawari"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.864197,
+        37.302552
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e7e7e7",
+      "description": "Rating Differential: 0.854625550661\nCategories: Seafood, Cajun/Creole",
+      "title": "The Boiling Crab"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4070514,
+        37.79847
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e7e7e7",
+      "description": "Rating Differential: 0.855513307985\nCategories: Asian Fusion",
+      "title": "The House"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.397163,
+        37.7623455918468
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e7e7e7",
+      "description": "Rating Differential: 0.856060606061\nCategories: Burgers, Creperies, French",
+      "title": "Chez Maman"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.409632,
+        37.7557815
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e7e7e7",
+      "description": "Rating Differential: 0.858490566038\nCategories: Mexican",
+      "title": "El Metate Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4628491,
+        37.7832493
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e6e6e6",
+      "description": "Rating Differential: 0.862903225806\nCategories: Desserts, Creperies",
+      "title": "Genki Crepes & Mini-Mart"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.466417011814,
+        37.7644547169329
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e5e5e5",
+      "description": "Rating Differential: 0.866666666667\nCategories: Japanese, Sushi Bars",
+      "title": "Ebisu"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.38818876502,
+        37.758100271937
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e4e4e4",
+      "description": "Rating Differential: 0.869565217391\nCategories: American (New)",
+      "title": "Serpentine"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4606481,
+        37.7829641
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e4e4e4",
+      "description": "Rating Differential: 0.871559633028\nCategories: Asian Fusion, Breakfast & Brunch, Burmese",
+      "title": "B Star Bar"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.5046876,
+        37.7531919
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e3e3e3",
+      "description": "Rating Differential: 0.876470588235\nCategories: Korean, Bars",
+      "title": "Toyose"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.396771288052,
+        37.7783200510611
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e2e2e2",
+      "description": "Rating Differential: 0.880503144654\nCategories: Brasseries, American (New)",
+      "title": "Marlowe"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4501138,
+        37.765244
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e2e2e2",
+      "description": "Rating Differential: 0.883333333333\nCategories: Breakfast & Brunch, French",
+      "title": "Zazie"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.467974,
+        37.739298
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e2e2e2",
+      "description": "Rating Differential: 0.883928571429\nCategories: Pizza, Sandwiches, Italian",
+      "title": "Goat Hill Pizza"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.397658,
+        37.762471
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e2e2e2",
+      "description": "Rating Differential: 0.883928571429\nCategories: Pizza",
+      "title": "Goat Hill Pizza"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.061452865601,
+        37.8963949857726
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e1e1e1",
+      "description": "Rating Differential: 0.884955752212\nCategories: Burgers, Steakhouses, Sandwiches",
+      "title": "Buckhorn Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9310654,
+        37.6973991
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e1e1e1",
+      "description": "Rating Differential: 0.884955752212\nCategories: American (Traditional), Barbeque",
+      "title": "Buckhorn Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.861278,
+        37.252467
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e1e1e1",
+      "description": "Rating Differential: 0.884955752212\nCategories: American (Traditional)",
+      "title": "Buckhorn Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.406370567092,
+        37.7839926305398
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e1e1e1",
+      "description": "Rating Differential: 0.884955752212\nCategories: Steakhouses, Sandwiches, American (New)",
+      "title": "Buckhorn Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2932301,
+        37.8335998
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e1e1e1",
+      "description": "Rating Differential: 0.884955752212\nCategories: Steakhouses, Sandwiches, Barbeque",
+      "title": "Buckhorn Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.388854026794,
+        37.7579585099187
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e1e1e1",
+      "description": "Rating Differential: 0.886956521739\nCategories: American (Traditional), Breakfast & Brunch, Sandwiches",
+      "title": "Just For You Cafe"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3951143,
+        37.7895111
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e1e1e1",
+      "description": "Rating Differential: 0.887931034483\nCategories: American (New)",
+      "title": "Town Hall"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.40835,
+        37.7996929
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e1e1e1",
+      "description": "Rating Differential: 0.890756302521\nCategories: Seafood, Italian",
+      "title": "Sotto Mare"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.419764563536,
+        37.7619463343878
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e1e1e1",
+      "description": "Rating Differential: 0.891304347826\nCategories: Burmese, Chinese",
+      "title": "Yamo"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2923009,
+        37.8551825
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e1e1e1",
+      "description": "Rating Differential: 0.892156862745\nCategories: Breakfast & Brunch, American (New), Burgers",
+      "title": "900 Grayson"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.428403147098,
+        37.7676300286656
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e1e1e1",
+      "description": "Rating Differential: 0.892561983471\nCategories: Seafood, Fish & Chips",
+      "title": "Woodhouse Fish Company"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.25990134755,
+        37.828567111939
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e0e0e0",
+      "description": "Rating Differential: 0.894366197183\nCategories: American (Traditional)",
+      "title": "Homeroom"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4191801,
+        37.7564149
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e0e0e0",
+      "description": "Rating Differential: 0.896551724138\nCategories: Mediterranean, American (New)",
+      "title": "Foreign Cinema"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1605025,
+        37.4433596
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e0e0e0",
+      "description": "Rating Differential: 0.897106109325\nCategories: Pizza",
+      "title": "Pizzeria Delfina"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4343326,
+        37.7890022
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e0e0e0",
+      "description": "Rating Differential: 0.897106109325\nCategories: Pizza, Italian",
+      "title": "Pizzeria Delfina"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.424261,
+        37.7614528
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e0e0e0",
+      "description": "Rating Differential: 0.897106109325\nCategories: Pizza, Italian",
+      "title": "Pizzeria Delfina"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.349085,
+        37.5773229
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#e0e0e0",
+      "description": "Rating Differential: 0.897106109325\nCategories: Italian, Pizza",
+      "title": "Pizzeria Delfina"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2514796,
+        37.8434484
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.898550724638\nCategories: Breakfast & Brunch, Creperies, American (New)",
+      "title": "Crepevine"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.160998,
+        37.44698
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.898550724638\nCategories: Breakfast & Brunch, Creperies, American (New)",
+      "title": "Crepevine"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4647099,
+        37.7643456
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.898550724638\nCategories: Breakfast & Brunch, Creperies, American (New)",
+      "title": "Crepevine"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.90056089437,
+        37.308100827673
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.898550724638\nCategories: Breakfast & Brunch, Creperies, American (New)",
+      "title": "Crepevine"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4856486,
+        37.7821331
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.899082568807\nCategories: Breakfast & Brunch, Soul Food",
+      "title": "Hard Knox Cafe"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.388581,
+        37.757528
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.899082568807\nCategories: Southern, Soul Food",
+      "title": "Hard Knox Cafe"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.504987,
+        37.7602646
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.899224806202\nCategories: Breakfast & Brunch, Sandwiches, American (New)",
+      "title": "Outerlands"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.422807440162,
+        37.7769459038973
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.9\nCategories: Breakfast & Brunch, Bars, French",
+      "title": "Absinthe Brasserie & Bar"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1529217,
+        37.7228932
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.9\nCategories: American (Traditional), Burgers",
+      "title": "The Habit Burger Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.0625198,
+        37.8951994
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.9\nCategories: Burgers, Sandwiches",
+      "title": "The Habit Burger Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.063125019299,
+        37.926637975593
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.9\nCategories: American (Traditional), Burgers, Fast Food",
+      "title": "The Habit Burger Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.03307584099,
+        37.367863207251
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.9\nCategories: Burgers, Salad",
+      "title": "The Habit Burger Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4687287,
+        37.6686474
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.9\nCategories: Burgers, Sandwiches",
+      "title": "The Habit Burger Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.970088194002,
+        37.5015139778581
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.9\nCategories: Burgers, American (New)",
+      "title": "The Habit Burger Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.969679,
+        37.7787859
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.9\nCategories: Burgers, Salad",
+      "title": "The Habit Burger Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.959751211107,
+        37.3519372261489
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.9\nCategories: Burgers",
+      "title": "The Habit Burger Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.930076069207,
+        37.7086911060237
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.9\nCategories: American (Traditional), Burgers, Fast Food",
+      "title": "The Habit Burger Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.898192167282,
+        37.6575622511793
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.9\nCategories: American (Traditional), Burgers, Sandwiches",
+      "title": "The Habit Burger Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.736543526878,
+        37.9629201937209
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.9\nCategories: Burgers",
+      "title": "The Habit Burger Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.291011,
+        37.544952
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.9\nCategories: Burgers, Sandwiches",
+      "title": "The Habit Burger Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2814526,
+        37.787446
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dfdfdf",
+      "description": "Rating Differential: 0.9\nCategories: Burgers, Sandwiches",
+      "title": "The Habit Burger Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4733373,
+        37.7318587
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dedede",
+      "description": "Rating Differential: 0.908108108108\nCategories: Japanese, Hot Pot",
+      "title": "Shabu House"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.885828189552,
+        37.4355482446904
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dedede",
+      "description": "Rating Differential: 0.908108108108\nCategories: Japanese, Hot Pot",
+      "title": "Shabu House"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.463255253476,
+        37.7831017979779
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dedede",
+      "description": "Rating Differential: 0.908108108108\nCategories: Japanese, Hot Pot",
+      "title": "Shabu House"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3646977,
+        37.5853489
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dedede",
+      "description": "Rating Differential: 0.908108108108\nCategories: Japanese, Hot Pot",
+      "title": "Shabu House"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1376892,
+        37.7111918
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ddd",
+      "description": "Rating Differential: 0.9125\nCategories: Mexican",
+      "title": "Taqueria Guadalajara"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4375124,
+        37.721189
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ddd",
+      "description": "Rating Differential: 0.9125\nCategories: Mexican",
+      "title": "Taqueria Guadalajara"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.414980083704,
+        37.7525062859058
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ddd",
+      "description": "Rating Differential: 0.9125\nCategories: Mexican",
+      "title": "Taqueria Guadalajara"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4218206,
+        37.7609695
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ddd",
+      "description": "Rating Differential: 0.913043478261\nCategories: Bakeries, Cafes",
+      "title": "Craftsman and Wolves"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1200733,
+        37.8913446
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ddd",
+      "description": "Rating Differential: 0.913513513514\nCategories: American (New), Pizza",
+      "title": "Chow"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.996826293322,
+        37.8187327525244
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ddd",
+      "description": "Rating Differential: 0.913513513514\nCategories: Breakfast & Brunch, American (New)",
+      "title": "Chow"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4285931,
+        37.7671967
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ddd",
+      "description": "Rating Differential: 0.913513513514\nCategories: American (Traditional), Breakfast & Brunch, Comfort Food",
+      "title": "Chow"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.402048,
+        37.781636
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ddd",
+      "description": "Rating Differential: 0.913636363636\nCategories: Pizza, Lounges, Italian",
+      "title": "Zero Zero"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.12016005069,
+        37.891744950616
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dcdcdc",
+      "description": "Rating Differential: 0.917582417582\nCategories: American (Traditional), Burgers",
+      "title": "Roam Artisan Burgers"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4338733,
+        37.7876976
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dcdcdc",
+      "description": "Rating Differential: 0.917582417582\nCategories: Burgers, Gluten-Free",
+      "title": "Roam Artisan Burgers"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4285515,
+        37.7978912
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dcdcdc",
+      "description": "Rating Differential: 0.917582417582\nCategories: Burgers",
+      "title": "Roam Artisan Burgers"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.420636,
+        37.753868
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dcdcdc",
+      "description": "Rating Differential: 0.91796875\nCategories: Bars, Italian, Pizza",
+      "title": "Beretta"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4691286,
+        37.7806563
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dcdcdc",
+      "description": "Rating Differential: 0.920454545455\nCategories: Korean",
+      "title": "My Tofu House"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4512722,
+        37.7694456
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dbdbdb",
+      "description": "Rating Differential: 0.923076923077\nCategories: Pizza",
+      "title": "Escape From New York Pizza"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.96345085625,
+        37.2361487314481
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dbdbdb",
+      "description": "Rating Differential: 0.924\nCategories: Burgers",
+      "title": "Super Duper Burgers"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.950909,
+        37.326954
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dbdbdb",
+      "description": "Rating Differential: 0.924\nCategories: Burgers",
+      "title": "Super Duper Burgers"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.433698,
+        37.7640087
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dbdbdb",
+      "description": "Rating Differential: 0.924\nCategories: Burgers, American (New)",
+      "title": "Super Duper Burgers"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.403905,
+        37.786856
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dbdbdb",
+      "description": "Rating Differential: 0.924\nCategories: Burgers",
+      "title": "Super Duper Burgers"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4103258,
+        37.7872547
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dbdbdb",
+      "description": "Rating Differential: 0.924369747899\nCategories: Thai",
+      "title": "Chabaa Thai Cuisine"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.421694,
+        37.7594105
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dadada",
+      "description": "Rating Differential: 0.929203539823\nCategories: Cocktail Bars, American (New)",
+      "title": "Range Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.43755848222,
+        37.774883043712
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#dadada",
+      "description": "Rating Differential: 0.929765886288\nCategories: Modern European, American (New)",
+      "title": "Nopa"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.421725769975,
+        37.7768972383445
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d9d9d9",
+      "description": "Rating Differential: 0.937823834197\nCategories: Thai",
+      "title": "Lers Ros Thai"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4238204,
+        37.7646834
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d9d9d9",
+      "description": "Rating Differential: 0.937823834197\nCategories: Thai",
+      "title": "Lers Ros Thai"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4176424,
+        37.7846957
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d9d9d9",
+      "description": "Rating Differential: 0.937823834197\nCategories: Thai",
+      "title": "Lers Ros Thai"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4818638,
+        37.7632182
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d9d9d9",
+      "description": "Rating Differential: 0.939393939394\nCategories: Thai",
+      "title": "Marnee Thai"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4664849,
+        37.7651217
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d9d9d9",
+      "description": "Rating Differential: 0.939393939394\nCategories: Thai",
+      "title": "Marnee Thai"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4845805,
+        37.7423964
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d8d8d8",
+      "description": "Rating Differential: 0.941176470588\nCategories: Dim Sum",
+      "title": "Kingdom of Dumpling"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.420796,
+        37.790939
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d8d8d8",
+      "description": "Rating Differential: 0.942446043165\nCategories: Seafood",
+      "title": "Swan Oyster Depot"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.027271380762,
+        37.3622217821305
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d8d8d8",
+      "description": "Rating Differential: 0.94262295082\nCategories: Asian Fusion, Korean, Chicken Wings",
+      "title": "BonChon Chicken"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.452386532034,
+        37.6449887679286
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d8d8d8",
+      "description": "Rating Differential: 0.94262295082\nCategories: Asian Fusion, Korean, Chicken Wings",
+      "title": "BonChon Chicken"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3232113,
+        37.565901
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d8d8d8",
+      "description": "Rating Differential: 0.94262295082\nCategories: Asian Fusion, Korean, Chicken Wings",
+      "title": "BonChon Chicken"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.228189028407,
+        37.4908884773078
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d7d7d7",
+      "description": "Rating Differential: 0.946153846154\nCategories: Seafood",
+      "title": "Old Port Lobster Shack"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1930804,
+        37.4012808
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d7d7d7",
+      "description": "Rating Differential: 0.946153846154\nCategories: Seafood",
+      "title": "Old Port Lobster Shack"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.944462302745,
+        37.3260140189265
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d7d7d7",
+      "description": "Rating Differential: 0.946153846154\nCategories: Seafood",
+      "title": "Old Port Lobster Shack"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.481726,
+        37.780467
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d7d7d7",
+      "description": "Rating Differential: 0.94701986755\nCategories: Moroccan",
+      "title": "Aziza"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.263077414212,
+        37.8347696232133
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d7d7d7",
+      "description": "Rating Differential: 0.947474747475\nCategories: Burmese",
+      "title": "Burma Superstar"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2434774,
+        37.7637187
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d7d7d7",
+      "description": "Rating Differential: 0.947474747475\nCategories: Burmese",
+      "title": "Burma Superstar"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4625554,
+        37.7828306
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d7d7d7",
+      "description": "Rating Differential: 0.947474747475\nCategories: Burmese",
+      "title": "Burma Superstar"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2326062,
+        37.7682331
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d6d6d6",
+      "description": "Rating Differential: 0.948529411765\nCategories: Cheesesteaks, Sandwiches",
+      "title": "The Cheese Steak Shop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1134827,
+        37.8924905
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d6d6d6",
+      "description": "Rating Differential: 0.948529411765\nCategories: Cheesesteaks, Sandwiches",
+      "title": "The Cheese Steak Shop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.11959303137999,
+        37.667384666111
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d6d6d6",
+      "description": "Rating Differential: 0.948529411765\nCategories: Cheesesteaks, Sandwiches, Specialty Food",
+      "title": "The Cheese Steak Shop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9726838,
+        37.7776913
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d6d6d6",
+      "description": "Rating Differential: 0.948529411765\nCategories: Cheesesteaks, Steakhouses, Sandwiches",
+      "title": "The Cheese Steak Shop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.962174586952,
+        37.5341790478351
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d6d6d6",
+      "description": "Rating Differential: 0.948529411765\nCategories: Cheesesteaks, Sandwiches",
+      "title": "The Cheese Steak Shop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.89886010206999,
+        37.434986644369
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d6d6d6",
+      "description": "Rating Differential: 0.948529411765\nCategories: Cheesesteaks, Sandwiches, American (New)",
+      "title": "The Cheese Steak Shop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4397988,
+        37.7855874
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d6d6d6",
+      "description": "Rating Differential: 0.948529411765\nCategories: Cheesesteaks, Sandwiches",
+      "title": "The Cheese Steak Shop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3231353,
+        37.5661549
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d6d6d6",
+      "description": "Rating Differential: 0.948529411765\nCategories: Cheesesteaks, Sandwiches",
+      "title": "The Cheese Steak Shop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3097633,
+        37.9872016
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d6d6d6",
+      "description": "Rating Differential: 0.948529411765\nCategories: Cheesesteaks, Sandwiches",
+      "title": "The Cheese Steak Shop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2929528,
+        37.868755
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d6d6d6",
+      "description": "Rating Differential: 0.948529411765\nCategories: Cheesesteaks, Sandwiches",
+      "title": "The Cheese Steak Shop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.462736,
+        37.764337
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d6d6d6",
+      "description": "Rating Differential: 0.948717948718\nCategories: Singaporean, Indonesian, Malaysian",
+      "title": "Lime Tree Southeast Asian Kitchen"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.468323160254,
+        37.7827421185773
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d6d6d6",
+      "description": "Rating Differential: 0.948717948718\nCategories: Malaysian, Singaporean",
+      "title": "Lime Tree Southeast Asian Kitchen"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4332785,
+        37.7874245926637
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d6d6d6",
+      "description": "Rating Differential: 0.950819672131\nCategories: Seafood, Fish & Chips",
+      "title": "Woodhouse Fish Co."
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1232345,
+        37.8917694
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d5d5d5",
+      "description": "Rating Differential: 0.952830188679\nCategories: Pizza",
+      "title": "Pizza Antica"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.948049744656,
+        37.3217489749968
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d5d5d5",
+      "description": "Rating Differential: 0.952830188679\nCategories: Pizza",
+      "title": "Pizza Antica"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.514433451133,
+        37.8985830832071
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d5d5d5",
+      "description": "Rating Differential: 0.952830188679\nCategories: Bars, Pizza, Italian",
+      "title": "Pizza Antica"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.419043978989,
+        37.7598640742271
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d5d5d5",
+      "description": "Rating Differential: 0.953125\nCategories: Bars, American (New)",
+      "title": "Teeth SF"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.433005,
+        37.78374
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d5d5d5",
+      "description": "Rating Differential: 0.954248366013\nCategories: Tapas/Small Plates, American (New)",
+      "title": "State Bird Provisions"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.111793404522,
+        37.4031439185321
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d5d5d5",
+      "description": "Rating Differential: 0.955390334572\nCategories: Seafood",
+      "title": "Pacific Catch"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4662399,
+        37.7657544
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d5d5d5",
+      "description": "Rating Differential: 0.955390334572\nCategories: Seafood",
+      "title": "Pacific Catch"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.932594358845,
+        37.2895016031516
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d5d5d5",
+      "description": "Rating Differential: 0.955390334572\nCategories: Seafood",
+      "title": "Pacific Catch"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.8910984,
+        37.7049657
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d5d5d5",
+      "description": "Rating Differential: 0.955390334572\nCategories: Seafood, Fish & Chips",
+      "title": "Pacific Catch"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.5176689,
+        37.9286189
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d5d5d5",
+      "description": "Rating Differential: 0.955390334572\nCategories: Seafood",
+      "title": "Pacific Catch"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4365977,
+        37.8006523
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d5d5d5",
+      "description": "Rating Differential: 0.955390334572\nCategories: Seafood, Mexican, Gluten-Free",
+      "title": "Pacific Catch"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3227351,
+        37.5658261
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d5d5d5",
+      "description": "Rating Differential: 0.955390334572\nCategories: Seafood, Hawaiian",
+      "title": "Pacific Catch"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.267527,
+        37.8698014
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d4d4d4",
+      "description": "Rating Differential: 0.957317073171\nCategories: Pubs, Breweries, Pizza",
+      "title": "Jupiter"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.452033,
+        37.769123
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d4d4d4",
+      "description": "Rating Differential: 0.958333333333\nCategories: Tapas Bars, Cuban, Caribbean",
+      "title": "Cha Cha Cha"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.394214,
+        37.780898
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d4d4d4",
+      "description": "Rating Differential: 0.959016393443\nCategories: Breakfast & Brunch, French",
+      "title": "Butler & The Chef Bistro"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.161081,
+        37.4434868
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d4d4d4",
+      "description": "Rating Differential: 0.962765957447\nCategories: Mexican",
+      "title": "Tacolicious"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.436727,
+        37.80046
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d4d4d4",
+      "description": "Rating Differential: 0.962765957447\nCategories: Mexican",
+      "title": "Tacolicious"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4213802,
+        37.7605905
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d4d4d4",
+      "description": "Rating Differential: 0.962765957447\nCategories: Mexican",
+      "title": "Tacolicious"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.393585107101,
+        37.795822823517
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d4d4d4",
+      "description": "Rating Differential: 0.962765957447\nCategories: Food Stands, Mexican",
+      "title": "Tacolicious"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.475195,
+        37.726302
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d3d3d3",
+      "description": "Rating Differential: 0.968\nCategories: Bakeries, Sandwiches, Salad",
+      "title": "Boudin Bakery & Cafe"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.944395809952,
+        37.3261684429962
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d3d3d3",
+      "description": "Rating Differential: 0.968\nCategories: Bakeries, Sandwiches, Salad",
+      "title": "Boudin Bakery & Cafe"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4148085,
+        37.8085287
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d3d3d3",
+      "description": "Rating Differential: 0.968\nCategories: Bakeries, Sandwiches, Salad",
+      "title": "Boudin Bakery & Cafe"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.386150360107,
+        37.6181067305154
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d3d3d3",
+      "description": "Rating Differential: 0.968\nCategories: Bakeries, Delis",
+      "title": "Boudin Bakery & Cafe"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.422329609179,
+        37.7647859386295
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d3d3d3",
+      "description": "Rating Differential: 0.968992248062\nCategories: Mediterranean",
+      "title": "Truly Mediterranean"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4666412,
+        37.6660586
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d2d2d2",
+      "description": "Rating Differential: 0.970085470085\nCategories: Dim Sum, Seafood",
+      "title": "Koi Palace"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.915658796499,
+        37.4194529231224
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d2d2d2",
+      "description": "Rating Differential: 0.970085470085\nCategories: Dim Sum, Cantonese",
+      "title": "Koi Palace"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.876026391983,
+        37.7046367482138
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d2d2d2",
+      "description": "Rating Differential: 0.970085470085\nCategories: Dim Sum, Seafood, Cantonese",
+      "title": "Koi Palace"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.94863176176,
+        37.3209099829511
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d2d2d2",
+      "description": "Rating Differential: 0.970588235294\nCategories: Burgers",
+      "title": "The Counter Santana Row"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.466281482937,
+        37.765409579693
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d2d2d2",
+      "description": "Rating Differential: 0.971631205674\nCategories: Mexican, Comfort Food, Gluten-Free",
+      "title": "Nopalito"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.438993048014,
+        37.77343530099
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d2d2d2",
+      "description": "Rating Differential: 0.971631205674\nCategories: Mexican, Gluten-Free",
+      "title": "Nopalito"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.419701,
+        37.753802
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d2d2d2",
+      "description": "Rating Differential: 0.972727272727\nCategories: Bars, Mexican",
+      "title": "Velvet Cantina"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.392192,
+        37.793168
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#d1d1d1",
+      "description": "Rating Differential: 0.976377952756\nCategories: French, Japanese, Sushi Bars",
+      "title": "Chaya Brasserie"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4243769,
+        37.761357
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cfcfcf",
+      "description": "Rating Differential: 0.98347107438\nCategories: Italian",
+      "title": "Delfina"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.311463363044,
+        37.5486500684273
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cfcfcf",
+      "description": "Rating Differential: 0.985507246377\nCategories: Ramen",
+      "title": "Santa Ramen"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.38971119238,
+        37.790204713203
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cfcfcf",
+      "description": "Rating Differential: 0.986301369863\nCategories: Bars, Mediterranean, American (New)",
+      "title": "Palomino"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.078970214173,
+        37.3942155182852
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cdcdcd",
+      "description": "Rating Differential: 0.990909090909\nCategories: Japanese, Hot Pot",
+      "title": "Shabuway Japanese Style Hot Pot"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.474435,
+        37.7808262
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cdcdcd",
+      "description": "Rating Differential: 0.990909090909\nCategories: Japanese, Hot Pot",
+      "title": "Shabuway Japanese Style Hot Pot"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.977252715098,
+        37.3156654689594
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cdcdcd",
+      "description": "Rating Differential: 0.990909090909\nCategories: Japanese, Hot Pot",
+      "title": "Shabuway Japanese Style Hot Pot"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9769911,
+        37.3530828
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cdcdcd",
+      "description": "Rating Differential: 0.990909090909\nCategories: Japanese, Hot Pot",
+      "title": "Shabuway Japanese Style Hot Pot"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.323975,
+        37.5647049
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cdcdcd",
+      "description": "Rating Differential: 0.990909090909\nCategories: Japanese, Hot Pot",
+      "title": "Shabuway Japanese Style Hot Pot"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4672038,
+        37.7830983
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cdcdcd",
+      "description": "Rating Differential: 0.9921875\nCategories: Dim Sum",
+      "title": "Good Luck Dim Sum"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1591238,
+        37.7292871
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cdcdcd",
+      "description": "Rating Differential: 0.992307692308\nCategories: Chinese",
+      "title": "Yummy Yummy"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4688289,
+        37.7637125
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cdcdcd",
+      "description": "Rating Differential: 0.992307692308\nCategories: Chinese, Vietnamese",
+      "title": "Yummy Yummy"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4664223,
+        37.7407037
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cdcdcd",
+      "description": "Rating Differential: 0.994011976048\nCategories: Peruvian, Tapas Bars, Latin American",
+      "title": "Fresca"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4659221,
+        37.7638935
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cdcdcd",
+      "description": "Rating Differential: 0.994011976048\nCategories: Peruvian, Latin American",
+      "title": "Fresca"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4337137,
+        37.7893075
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cdcdcd",
+      "description": "Rating Differential: 0.994011976048\nCategories: Peruvian, Tapas Bars, Seafood",
+      "title": "Fresca"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.48768718376,
+        37.613212625199
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#ccc",
+      "description": "Rating Differential: 1.0\nCategories: Barbeque",
+      "title": "Gorilla Barbeque"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.451176,
+        37.769371
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cbcbcb",
+      "description": "Rating Differential: 1.00704225352\nCategories: Bars, American (New)",
+      "title": "The Alembic"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4635134,
+        37.7770123
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cacaca",
+      "description": "Rating Differential: 1.00806451613\nCategories: Japanese, Sushi Bars",
+      "title": "Sushi Bistro"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4661859,
+        37.7651675
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cacaca",
+      "description": "Rating Differential: 1.00854700855\nCategories: American (Traditional), Breakfast & Brunch, Comfort Food",
+      "title": "Park Chow"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9769249,
+        37.3530773
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#cacaca",
+      "description": "Rating Differential: 1.00900900901\nCategories: Korean, Chicken Wings",
+      "title": "99 Chicken"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.159631530145,
+        37.4477894790344
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c8c8c8",
+      "description": "Rating Differential: 1.01739130435\nCategories: Asian Fusion",
+      "title": "Sushirrito"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4011211,
+        37.7880754
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c8c8c8",
+      "description": "Rating Differential: 1.01739130435\nCategories: Asian Fusion, Japanese",
+      "title": "Sushirrito"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.403844,
+        37.790345
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c8c8c8",
+      "description": "Rating Differential: 1.01739130435\nCategories: Asian Fusion, Japanese, Sushi Bars",
+      "title": "Sushirrito"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3979603,
+        37.7922841
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c8c8c8",
+      "description": "Rating Differential: 1.01739130435\nCategories: Asian Fusion, Sushi Bars",
+      "title": "Sushirrito"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1613321,
+        37.445022
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c8c8c8",
+      "description": "Rating Differential: 1.01834862385\nCategories: Cajun/Creole, Lounges, American (New)",
+      "title": "NOLA Restaurant & Bar"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4637545,
+        37.7812929
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c8c8c8",
+      "description": "Rating Differential: 1.0198019802\nCategories: Korean",
+      "title": "Brothers Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.412746,
+        37.758894
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c7c7c7",
+      "description": "Rating Differential: 1.02290076336\nCategories: Sandwiches, American (New)",
+      "title": "The American Grilled Cheese Kitchen"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.392763,
+        37.782485
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c7c7c7",
+      "description": "Rating Differential: 1.02290076336\nCategories: American (Traditional), Breakfast & Brunch, Sandwiches",
+      "title": "The American Grilled Cheese Kitchen"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.418123,
+        37.750883
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c7c7c7",
+      "description": "Rating Differential: 1.02431610942\nCategories: Mexican",
+      "title": "La Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4178971,
+        37.7839535
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c6c6c6",
+      "description": "Rating Differential: 1.02521008403\nCategories: Vietnamese",
+      "title": "Turtle Tower"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.269277513503,
+        37.8782181375896
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c6c6c6",
+      "description": "Rating Differential: 1.02542372881\nCategories: Breakfast & Brunch, Creperies, American (New)",
+      "title": "Crepevine Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.079922709163,
+        37.3924985852233
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c6c6c6",
+      "description": "Rating Differential: 1.02542372881\nCategories: Breakfast & Brunch, Creperies, American (New)",
+      "title": "Crepevine Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.5263767,
+        37.9731402
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c6c6c6",
+      "description": "Rating Differential: 1.02542372881\nCategories: Breakfast & Brunch, Creperies, American (New)",
+      "title": "Crepevine Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3475561,
+        37.5784673
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c6c6c6",
+      "description": "Rating Differential: 1.02542372881\nCategories: Breakfast & Brunch, Creperies, American (New)",
+      "title": "Crepevine Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.424198,
+        37.774056
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c5c5c5",
+      "description": "Rating Differential: 1.0297029703\nCategories: Breakfast & Brunch, American (New)",
+      "title": "Straw"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3890846,
+        37.7905151
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c5c5c5",
+      "description": "Rating Differential: 1.03007518797\nCategories: Seafood, Live/Raw Food, American (New)",
+      "title": "Waterbar"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2415975,
+        37.4915018
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c4c4c4",
+      "description": "Rating Differential: 1.03947368421\nCategories: American (Traditional), Breakfast & Brunch",
+      "title": "Stacks"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1833149,
+        37.4534159
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c4c4c4",
+      "description": "Rating Differential: 1.03947368421\nCategories: American (Traditional), Breakfast & Brunch",
+      "title": "Stacks"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9474911,
+        37.2872992
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c4c4c4",
+      "description": "Rating Differential: 1.03947368421\nCategories: American (Traditional), Breakfast & Brunch",
+      "title": "Stacks"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.347003308427,
+        37.5802552896545
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c4c4c4",
+      "description": "Rating Differential: 1.03947368421\nCategories: Coffee & Tea, Breakfast & Brunch, Burgers",
+      "title": "Stacks"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.105396,
+        37.653797
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.095117,
+        37.391175
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.056385,
+        37.970202
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.03811,
+        37.323218
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.031752,
+        37.366938
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.981805,
+        37.555185
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.972084343433,
+        37.5049937720372
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.969646,
+        37.778832
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.955229341984,
+        37.4163525187198
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.95632046225,
+        37.247578536581
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.940478901931,
+        37.294727502553
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.929152,
+        37.706459
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.903763338951,
+        37.3401939255
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.893056,
+        37.383519
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.861821329221,
+        37.3037309005936
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.803057936176,
+        37.2482398385098
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.741550266797,
+        37.6991728617778
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.468565255404,
+        37.668580819198
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Sandwiches",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.732996,
+        37.961944
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.446475877223,
+        37.7820441514385
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.381849,
+        37.600589
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.311169,
+        37.987588
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.287887409384,
+        37.8291409779944
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04379562044\nCategories: Soup, Sandwiches, Salad",
+      "title": "Panera Bread"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.404610176842,
+        37.7941177403554
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c3c3c3",
+      "description": "Rating Differential: 1.04545454545\nCategories: Seafood, Chinese",
+      "title": "R&G Lounge"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4369716,
+        37.7720453
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c2c2c2",
+      "description": "Rating Differential: 1.04918032787\nCategories: Mexican",
+      "title": "The Little Chihuahua"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4346263,
+        37.7510525
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c2c2c2",
+      "description": "Rating Differential: 1.04918032787\nCategories: Mexican",
+      "title": "The Little Chihuahua"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2607593,
+        37.5067347
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c1c1c1",
+      "description": "Rating Differential: 1.0534351145\nCategories: Caterers, Mexican",
+      "title": "La Corneta Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.43395,
+        37.73423
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c1c1c1",
+      "description": "Rating Differential: 1.0534351145\nCategories: Mexican",
+      "title": "La Corneta Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3459116,
+        37.5792482
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c1c1c1",
+      "description": "Rating Differential: 1.0534351145\nCategories: Caterers, Mexican",
+      "title": "La Corneta Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.40927370281,
+        37.7835763425135
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#c1c1c1",
+      "description": "Rating Differential: 1.05365853659\nCategories: Breakfast & Brunch, Southern, Soul Food",
+      "title": "Farmerbrown"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4147139,
+        37.7866907
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#bfbfbf",
+      "description": "Rating Differential: 1.06060606061\nCategories: Thai",
+      "title": "Osha Thai Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4220167,
+        37.743766
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#bbb",
+      "description": "Rating Differential: 1.0773480663\nCategories: Southern, Cajun/Creole",
+      "title": "The Front Porch"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.423777393059,
+        37.7649156994629
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#bbb",
+      "description": "Rating Differential: 1.07843137255\nCategories: Indian, Pakistani",
+      "title": "Pakwan Restaurant - 16th Street"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4459793,
+        37.7757199
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#bbb",
+      "description": "Rating Differential: 1.07901907357\nCategories: Mexican",
+      "title": "Papalote Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4210302,
+        37.7519777
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#bbb",
+      "description": "Rating Differential: 1.07901907357\nCategories: Mexican",
+      "title": "Papalote Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.947666,
+        37.323195
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b9b9b9",
+      "description": "Rating Differential: 1.08620689655\nCategories: Vegetarian, Bars, American (New)",
+      "title": "Yard House"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4342111,
+        37.7629977
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b9b9b9",
+      "description": "Rating Differential: 1.08653846154\nCategories: French",
+      "title": "Bisou Bistronomy"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.514263185819,
+        37.8985158386789
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b9b9b9",
+      "description": "Rating Differential: 1.08737864078\nCategories: Juice Bars & Smoothies, Gluten-Free, Vegan",
+      "title": "The Plant Cafe Organic"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.396012842655,
+        37.7979458225562
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b9b9b9",
+      "description": "Rating Differential: 1.08737864078\nCategories: Juice Bars & Smoothies, Vegetarian, Breakfast & Brunch",
+      "title": "The Plant Cafe Organic"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.38140553236,
+        37.6175309700488
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b9b9b9",
+      "description": "Rating Differential: 1.08737864078\nCategories: Coffee & Tea, Juice Bars & Smoothies, Vegetarian",
+      "title": "The Plant Cafe Organic"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3480553,
+        37.5778636
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b9b9b9",
+      "description": "Rating Differential: 1.08737864078\nCategories: Breakfast & Brunch, Gluten-Free, Vegan",
+      "title": "The Plant Cafe Organic"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.26657299831,
+        37.8105934816137
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b8b8b8",
+      "description": "Rating Differential: 1.09130434783\nCategories: Burgers, Gastropubs, American (New)",
+      "title": "Umami Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.159661,
+        37.44752
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b8b8b8",
+      "description": "Rating Differential: 1.09130434783\nCategories: Burgers, Gastropubs, American (New)",
+      "title": "Umami Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.435245513916,
+        37.7973057549931
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b8b8b8",
+      "description": "Rating Differential: 1.09130434783\nCategories: Burgers, Gastropubs, American (New)",
+      "title": "Umami Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.392959,
+        37.777703
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b8b8b8",
+      "description": "Rating Differential: 1.09130434783\nCategories: Burgers, Gastropubs, American (New)",
+      "title": "Umami Burger"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2527323,
+        37.856426
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b6b6b6",
+      "description": "Rating Differential: 1.09554140127\nCategories: Mexican",
+      "title": "Gordo Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4780875,
+        37.7806176
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b6b6b6",
+      "description": "Rating Differential: 1.09554140127\nCategories: Mexican, Fast Food",
+      "title": "Gordo Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2894752,
+        37.8909614
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b6b6b6",
+      "description": "Rating Differential: 1.09554140127\nCategories: Mexican",
+      "title": "Gordo Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.394218444824,
+        37.7959493020924
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b5b5b5",
+      "description": "Rating Differential: 1.09708737864\nCategories: Asian Fusion, Bars, Vietnamese",
+      "title": "The Slanted Door"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.469667976426,
+        37.6724543875659
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b4b4b4",
+      "description": "Rating Differential: 1.10084033613\nCategories: Southern, Soul Food, Chicken Shop",
+      "title": "Home of Chicken and Waffles"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.276003,
+        37.795345
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b4b4b4",
+      "description": "Rating Differential: 1.10084033613\nCategories: Breakfast & Brunch, Southern, Soul Food",
+      "title": "Home of Chicken and Waffles"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4210934,
+        37.764857
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b4b4b4",
+      "description": "Rating Differential: 1.10122699387\nCategories: Mexican",
+      "title": "Pancho Villa Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3216121,
+        37.5650328
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b4b4b4",
+      "description": "Rating Differential: 1.10122699387\nCategories: Mexican, Latin American",
+      "title": "Pancho Villa Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.420415580273,
+        37.7651299184884
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b4b4b4",
+      "description": "Rating Differential: 1.10344827586\nCategories: Mexican",
+      "title": "Taqueria Los Coyotes"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9772616,
+        37.3929081
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b4b4b4",
+      "description": "Rating Differential: 1.10377358491\nCategories: Mexican",
+      "title": "Iguanas"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.8842851,
+        37.3321127
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b4b4b4",
+      "description": "Rating Differential: 1.10377358491\nCategories: Mexican",
+      "title": "Iguanas"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.398723,
+        37.787515
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b3b3b3",
+      "description": "Rating Differential: 1.10691823899\nCategories: Thai",
+      "title": "Osha Thai"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4945147,
+        37.7756489
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b2b2b2",
+      "description": "Rating Differential: 1.10994764398\nCategories: Shanghainese",
+      "title": "Shanghai Dumpling King"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4510301,
+        37.7316655
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b2b2b2",
+      "description": "Rating Differential: 1.10994764398\nCategories: Dim Sum, Shanghainese",
+      "title": "Shanghai Dumpling King"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4296764,
+        37.7861859
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b0b0b0",
+      "description": "Rating Differential: 1.11403508772\nCategories: Ramen",
+      "title": "Tanpopo"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2504335,
+        37.7547247
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b0b0b0",
+      "description": "Rating Differential: 1.11728395062\nCategories: Japanese, Sushi Bars",
+      "title": "Sushi House"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.158277115992,
+        37.4391364816307
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b0b0b0",
+      "description": "Rating Differential: 1.11728395062\nCategories: Sushi Bars",
+      "title": "Sushi House"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9737873,
+        37.7728703
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b0b0b0",
+      "description": "Rating Differential: 1.11728395062\nCategories: Japanese, Sushi Bars",
+      "title": "Sushi House"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.411154,
+        37.626067
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#b0b0b0",
+      "description": "Rating Differential: 1.11728395062\nCategories: Japanese, Sushi Bars",
+      "title": "Sushi House"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4208659,
+        37.7895257
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#aeaeae",
+      "description": "Rating Differential: 1.12280701754\nCategories: Burgers, Diners, Portuguese",
+      "title": "Grubstake"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4833063954,
+        37.699958078943
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#aaa",
+      "description": "Rating Differential: 1.13740458015\nCategories: Singaporean, Thai, Malaysian",
+      "title": "Banana Island"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.243274931625,
+        37.7645114096272
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#a9a9a9",
+      "description": "Rating Differential: 1.14018691589\nCategories: Burgers, Comfort Food",
+      "title": "Burgermeister"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4496661,
+        37.7659667
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#a9a9a9",
+      "description": "Rating Differential: 1.14018691589\nCategories: Burgers",
+      "title": "Burgermeister"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.160918,
+        37.447061
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#a8a8a8",
+      "description": "Rating Differential: 1.14383561644\nCategories: American (Traditional), Desserts",
+      "title": "The Cheesecake Factory"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.061641686468,
+        37.8958778745309
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#a8a8a8",
+      "description": "Rating Differential: 1.14383561644\nCategories: American (Traditional), Desserts",
+      "title": "The Cheesecake Factory"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9474874,
+        37.3241229
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#a8a8a8",
+      "description": "Rating Differential: 1.14383561644\nCategories: American (Traditional), Desserts",
+      "title": "The Cheesecake Factory"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.928587019711,
+        37.6939842360084
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#a8a8a8",
+      "description": "Rating Differential: 1.14383561644\nCategories: American (Traditional), Desserts",
+      "title": "The Cheesecake Factory"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.861548878179,
+        37.2512731696794
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#a8a8a8",
+      "description": "Rating Differential: 1.14383561644\nCategories: American (Traditional), Desserts",
+      "title": "The Cheesecake Factory"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.5141166,
+        37.9298686
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#a8a8a8",
+      "description": "Rating Differential: 1.14383561644\nCategories: American (Traditional), Desserts",
+      "title": "The Cheesecake Factory"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.29915650061,
+        37.536419186081
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#a8a8a8",
+      "description": "Rating Differential: 1.14383561644\nCategories: American (Traditional), Desserts",
+      "title": "The Cheesecake Factory"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3984555,
+        37.7887962
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#a5a5a5",
+      "description": "Rating Differential: 1.15454545455\nCategories: Bars, American (New)",
+      "title": "Salt House"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4649169,
+        37.7642352
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#a3a3a3",
+      "description": "Rating Differential: 1.16417910448\nCategories: Indian",
+      "title": "Naan N Curry"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4618981,
+        37.7813606
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#999",
+      "description": "Rating Differential: 1.19424460432\nCategories: Tapas/Small Plates, Ramen",
+      "title": "Genki Ramen"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2259327,
+        37.485753
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#999",
+      "description": "Rating Differential: 1.1961722488\nCategories: Breakfast & Brunch, Mexican, Sandwiches",
+      "title": "La Victoria Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.0622855,
+        37.6444393
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#999",
+      "description": "Rating Differential: 1.1961722488\nCategories: Mexican",
+      "title": "La Victoria Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.907027,
+        37.363485
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#999",
+      "description": "Rating Differential: 1.1961722488\nCategories: Mexican",
+      "title": "La Victoria Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.8927135,
+        37.3354196
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#999",
+      "description": "Rating Differential: 1.1961722488\nCategories: Mexican",
+      "title": "La Victoria Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.88438061533,
+        37.332554634918
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#999",
+      "description": "Rating Differential: 1.1961722488\nCategories: Mexican",
+      "title": "La Victoria Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.876697,
+        37.258071
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#999",
+      "description": "Rating Differential: 1.1961722488\nCategories: Mexican",
+      "title": "La Victoria Taqueria"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.04244383216,
+        37.369382975343
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#949494",
+      "description": "Rating Differential: 1.21238938053\nCategories: Dim Sum",
+      "title": "Dim Sum King"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.465615,
+        37.7813609
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#8f8f8f",
+      "description": "Rating Differential: 1.23300970874\nCategories: Desserts, Cafes",
+      "title": "Kowloon Tong Dessert Cafe"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3995991,
+        37.785486
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#888",
+      "description": "Rating Differential: 1.26153846154\nCategories: Tapas/Small Plates, Breweries, Venues & Event Spaces",
+      "title": "Thirsty Bear Organic Brewery"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2463123,
+        37.5022751
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.24666495347,
+        37.810390381754
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2315755,
+        37.7685227
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1977448,
+        37.7376484
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1233198,
+        37.6994218
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.081107229181,
+        37.6738009945674
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.0640719,
+        37.6070823
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.056607,
+        37.944908
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.0425122,
+        37.3389252
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.975470103673,
+        37.5035111688547
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.978286743164,
+        37.3528442382812
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.957948,
+        37.9507316
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9417393,
+        37.266198
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9037704,
+        37.3402379
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9002937,
+        37.4344304
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.903043,
+        37.378734
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.8652112,
+        37.3020607
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.802568398416,
+        37.2482612988869
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.7450948,
+        37.7001351
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.7337762,
+        37.9612842
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.398898421716,
+        37.6069844565528
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.301125,
+        37.9917324
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.298916099162,
+        37.8993595795375
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2808047,
+        37.8328324
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#6e6e6e",
+      "description": "Rating Differential: 1.36094674556\nCategories: Chicken Wings",
+      "title": "Wingstop"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4073904,
+        37.7982486
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#686868",
+      "description": "Rating Differential: 1.38805970149\nCategories: Seafood, Italian",
+      "title": "The Stinking Rose - A Garlic Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.490071435588,
+        37.7325056039412
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.24476937435,
+        37.810817888836
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.246289624994,
+        37.5021552121639
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2289968,
+        37.4857949
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.19743013382,
+        37.7379119341843
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.17086459694,
+        37.44433702806
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.153808362782,
+        37.7233730012097
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1433001,
+        37.4239207
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.117597,
+        37.89272
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.106138352645,
+        37.9946759037839
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.0967784,
+        37.4215873
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.094379029476,
+        37.3906328974116
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.0768123,
+        37.6953245
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.0697589,
+        37.601875
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.0609818,
+        37.8957328
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.0515493,
+        37.5510754
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.0041102,
+        37.8231236
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.98154466538,
+        37.554512402533
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.974230781198,
+        37.5047218054533
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9602273,
+        37.3520236
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9503585,
+        37.3217651
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.954978,
+        37.416374
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9463823,
+        37.3948051
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9320207,
+        37.2909075
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9317889,
+        37.262256
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.928440779448,
+        37.7060403674841
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.922207608383,
+        37.3506145309809
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9169174,
+        37.3708221
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.908803,
+        37.331846
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.896713144285,
+        37.4134612905591
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.8961328,
+        37.3828574
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.890820495079,
+        37.705590832835
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.802828626025,
+        37.2487164382399
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.7416011,
+        37.6991774
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4460842,
+        37.7821513
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.38620528311,
+        37.596673098498
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3226348,
+        37.5655032
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.302207793214,
+        37.8990920009143
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Tex-Mex, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.296183821636,
+        37.8794811958277
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2920872,
+        37.5449055
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2806259,
+        37.5624201
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican, Fast Food",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2812417,
+        37.7860208
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#616161",
+      "description": "Rating Differential: 1.41758241758\nCategories: Mexican",
+      "title": "Chipotle Mexican Grill"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.51024866375,
+        37.769471115758
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#5c5c5c",
+      "description": "Rating Differential: 1.4380952381\nCategories: American (Traditional), Breakfast & Brunch, Breweries",
+      "title": "The Beach Chalet Brewery & Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1076906,
+        37.6500452
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#525252",
+      "description": "Rating Differential: 1.47368421053\nCategories: American (Traditional), Chicken Wings, Sports Bars",
+      "title": "Buffalo Wild Wings"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.0676319,
+        37.600001
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#525252",
+      "description": "Rating Differential: 1.47368421053\nCategories: American (Traditional), Chicken Wings, Sports Bars",
+      "title": "Buffalo Wild Wings"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.46857,
+        37.673189
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#525252",
+      "description": "Rating Differential: 1.47368421053\nCategories: American (Traditional), Chicken Wings, Sports Bars",
+      "title": "Buffalo Wild Wings"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9901251,
+        37.2928888
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#525252",
+      "description": "Rating Differential: 1.47368421053\nCategories: American (Traditional), Chicken Wings, Sports Bars",
+      "title": "Buffalo Wild Wings"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.971424382332,
+        37.5012186734266
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#525252",
+      "description": "Rating Differential: 1.47368421053\nCategories: American (Traditional), Chicken Wings, Sports Bars",
+      "title": "Buffalo Wild Wings"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.952469,
+        37.7645423
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#525252",
+      "description": "Rating Differential: 1.47368421053\nCategories: American (Traditional), Chicken Wings, Sports Bars",
+      "title": "Buffalo Wild Wings"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.8661,
+        37.705165
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#525252",
+      "description": "Rating Differential: 1.47368421053\nCategories: American (Traditional), Chicken Wings, Sports Bars",
+      "title": "Buffalo Wild Wings"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.773858295107,
+        37.6802219624804
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#525252",
+      "description": "Rating Differential: 1.47368421053\nCategories: American (Traditional), Chicken Wings, Sports Bars",
+      "title": "Buffalo Wild Wings"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.739339821476,
+        37.9611876638727
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#525252",
+      "description": "Rating Differential: 1.47368421053\nCategories: American (Traditional), Chicken Wings, Sports Bars",
+      "title": "Buffalo Wild Wings"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.490556639287,
+        37.7537799895757
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#222",
+      "description": "Rating Differential: 1.625\nCategories: Bakeries, Chinese",
+      "title": "ABC Bakery & Cafe"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.3227469,
+        37.564982
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#222",
+      "description": "Rating Differential: 1.625\nCategories: Bakeries, Asian Fusion",
+      "title": "ABC Bakery & Cafe"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.2538762,
+        37.7940891
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#0d0d0d",
+      "description": "Rating Differential: 1.70175438596\nCategories: Coffee & Tea, Juice Bars & Smoothies, Sandwiches",
+      "title": "Quickly"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.224192531477,
+        37.4917931901457
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#0d0d0d",
+      "description": "Rating Differential: 1.70175438596\nCategories: Asian Fusion, Bubble Tea",
+      "title": "Quickly"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.224809,
+        37.776674
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#0d0d0d",
+      "description": "Rating Differential: 1.70175438596\nCategories: Taiwanese, Chinese",
+      "title": "Quickly"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.130356,
+        37.697833
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#0d0d0d",
+      "description": "Rating Differential: 1.70175438596\nCategories: Coffee & Tea, Asian Fusion, Juice Bars & Smoothies",
+      "title": "Quickly"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1045497,
+        37.644379
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#0d0d0d",
+      "description": "Rating Differential: 1.70175438596\nCategories: Coffee & Tea, Asian Fusion",
+      "title": "Quickly"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.0739629,
+        37.694614
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#0d0d0d",
+      "description": "Rating Differential: 1.70175438596\nCategories: Coffee & Tea, Asian Fusion",
+      "title": "Quickly"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4776946,
+        37.7432057
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#0d0d0d",
+      "description": "Rating Differential: 1.70175438596\nCategories: Asian Fusion, Coffee & Tea, Bubble Tea",
+      "title": "Quickly"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.876084,
+        37.705825
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#0d0d0d",
+      "description": "Rating Differential: 1.70175438596\nCategories: Coffee & Tea, Asian Fusion",
+      "title": "Quickly"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.873784,
+        37.41755
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#0d0d0d",
+      "description": "Rating Differential: 1.70175438596\nCategories: Coffee & Tea, Asian Fusion",
+      "title": "Quickly"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.4538147,
+        37.7233027
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#0d0d0d",
+      "description": "Rating Differential: 1.70175438596\nCategories: Coffee & Tea, Asian Fusion, Juice Bars & Smoothies",
+      "title": "Quickly"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.452262,
+        37.645043
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#0d0d0d",
+      "description": "Rating Differential: 1.70175438596\nCategories: Asian Fusion, Cafes, Vietnamese",
+      "title": "Quickly"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.442636,
+        37.714307
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#0d0d0d",
+      "description": "Rating Differential: 1.70175438596\nCategories: Coffee & Tea, Asian Fusion, Bubble Tea",
+      "title": "Quickly"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.323523,
+        37.56436
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#0d0d0d",
+      "description": "Rating Differential: 1.70175438596\nCategories: Coffee & Tea, Asian Fusion",
+      "title": "Quickly"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.144299,
+        37.424752
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#000",
+      "description": "Rating Differential: 1.74637681159\nCategories: Salad, Wine Bars, Italian",
+      "title": "Olive Garden Italian Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.1067068,
+        37.6477804
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#000",
+      "description": "Rating Differential: 1.74637681159\nCategories: Salad, Wine Bars, Italian",
+      "title": "Olive Garden Italian Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.47638172212,
+        37.7273592696199
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#000",
+      "description": "Rating Differential: 1.74637681159\nCategories: Salad, Wine Bars, Italian",
+      "title": "Olive Garden Italian Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.9993571,
+        37.5313225
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#000",
+      "description": "Rating Differential: 1.74637681159\nCategories: Salad, Wine Bars, Italian",
+      "title": "Olive Garden Italian Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.896052872819,
+        37.4130534797399
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#000",
+      "description": "Rating Differential: 1.74637681159\nCategories: Salad, Wine Bars, Italian",
+      "title": "Olive Garden Italian Restaurant"
+    }
+  },
+  {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.8646377,
+        37.2499442
+      ]
+    },
+    "type": "Feature",
+    "properties": {
+      "marker-size": "medium",
+      "marker-color": "#000",
+      "description": "Rating Differential: 1.74637681159\nCategories: Salad, Wine Bars, Italian",
+      "title": "Olive Garden Italian Restaurant"
+    }
+  }
+];
+
+var map = L.mapbox.map('map', 'mapbox.streets').setView([37.639, -122.308], 9);
+
+map.featureLayer.setGeoJSON(geojson)
+map.scrollWheelZoom.disable();
+
+</script>
+</body>
+</html>

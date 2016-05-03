@@ -3,4 +3,4 @@ CapstoneVideos/*
 *.txt
 *.csv
 startbootstrap*
-scraped*
+data/scraped*
