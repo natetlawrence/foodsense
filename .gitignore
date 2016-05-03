@@ -1,8 +1,0 @@
-.*
-Old Files/*
-CapstoneVideos/*
-*.txt
-*.csv
-startbootstrap*
-data/scraped*
-flaskapp/templates/oldfiles/*
