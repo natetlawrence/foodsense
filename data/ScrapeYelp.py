@@ -204,49 +204,6 @@ def saveListMetaData(BListFileName,MetaDataFileName):
 
 def main():
 
-
-    # BizFilename = sys.argv[5]
-    # # ReviewFilename = sys.argv[4]
-    # latBounds = [sys.argv[1],sys.argv[2]]
-    # longBounds = [sys.argv[3],sys.argv[4]]
-    # minReviews = 50
-    # bg = BusinessGrid(latBounds,longBounds,minReviews)
-    # bg.searchGrid()
-    # print 'Found total of {} Businesses'.format(len(bg.BusinessList))
-    # bg.writeBusinessList(BizFilename)
-
-    #
-    # bg.getAndSaveReviews(ReviewFilename)
-
-    #append all business lists into one
-    # bg = BusinessGrid(latBounds,longBounds,minReviews)
-    # numInstance = 15
-    #
-    # BizFilename = lambda start,stop: 'YelpBusinessList5_{}_{}.csv'.format(start,stop)
-    # blockLimits = [0,30]
-    # step = (blockLimits[1]-blockLimits[0])/float(numInstance)
-    # blockStart = list(np.round(np.arange(blockLimits[0],blockLimits[1]-step+.001,step)).astype(int))
-    # blockStop = list(np.round(np.arange(blockLimits[0]+step,blockLimits[1]+.001,step)).astype(int))
-    #
-    # for bb in range(0,numInstance):
-    #     bg.loadBusinessList(BizFilename(blockStart[bb],blockStop[bb]))
-    # bg.writeBusinessList('BusinessList.csv')
-
-    ## load business list and get reviews
-    # BizFilename = sys.argv[1]
-    # ReviewFilename = sys.argv[2]
-    # latBounds = [None,None]
-    # longBounds = [None,None]
-    # minReviews = None
-    # bg = BusinessGrid(latBounds,longBounds,minReviews)
-    # bg.loadBusinessList(BizFilename)
-    # bg.getAndSaveReviews(ReviewFilename)
-
-    ## test get metadata
-    # b = Business('Taqueria','/biz/taqueria-castillo-mason-san-francisco',100)
-    # b.getmetadata()
-    # b.savemetadata('TaqueriaMetaData.json')
-
     mode = sys.argv[1]
     if mode == '0':
         BizFilename = sys.argv[5]
